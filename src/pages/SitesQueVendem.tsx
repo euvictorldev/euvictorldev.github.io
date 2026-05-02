@@ -192,25 +192,25 @@ const requirementsFAQ = [
 export default function SitesQueVendem() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* ── Back Button ── */}
-      <div className="pt-8 px-6">
-        <Link
-          to="/#servicos"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Voltar aos Serviços
-        </Link>
-      </div>
-
-      {/* ── Hero ── */}
-      <section className="pt-12 pb-16 px-6 text-center relative overflow-hidden">
-        {/* Radial glow behind hero */}
+      {/* ── Hero (includes back button so glow extends behind it) ── */}
+      <section className="pt-8 pb-16 px-6 relative">
+        {/* Radial glow behind entire hero area */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[700px] h-[700px] rounded-full bg-primary/5 blur-[120px]" />
         </div>
 
-        <div className="relative z-10">
+        {/* Back Button */}
+        <div className="relative z-10 mb-12">
+          <Link
+            to="/#servicos"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Voltar aos Serviços
+          </Link>
+        </div>
+
+        <div className="relative z-10 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary mx-auto">
             <Globe className="h-10 w-10" strokeWidth={1.5} />
           </div>
