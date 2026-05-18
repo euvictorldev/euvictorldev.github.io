@@ -110,8 +110,9 @@ const featuredProjects: FeaturedProject[] = [
       </div>
     ),
     stack: ["TypeScript", "VS Code API", "Node.js", "Octokit"],
-    borderStyle: "browser",
-    mediaType: "placeholder",
+    image: `${base}/images/ghostcommit-icon.png`,
+    borderStyle: "discord",
+    mediaType: "image",
     glowColor: "rgba(255, 255, 255, 0.4)",
     date: "mai/26",
   },
