@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
-  Globe,
+  ShieldCheck,
   CheckCircle2,
   Zap,
   Target,
@@ -12,11 +12,15 @@ import {
   Star,
   ChevronRight,
   Server,
-  Palette,
-  BarChart3,
   Lock,
-  FileText,
-  HeadphonesIcon,
+  Mail,
+  Bug,
+  Globe,
+  Bell,
+  HardDrive,
+  Activity,
+  UserCheck,
+  LifeBuoy,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -47,148 +51,71 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "bio-link",
-    name: "Bio-Link Estratégico",
-    idealFor: "Profissionais e pequenos negócios que precisam centralizar sua presença digital.",
-    priceFrom: "R$ 300",
-    priceLabel: "A partir de",
-    timeframe: "2 a 3 dias úteis",
-    highlighted: false,
-    keyFeatures: [
-      "Design Mobile-First otimizado",
-      "Botão de WhatsApp flutuante e animado",
-      "Domínio próprio configurado",
-      "Certificado SSL incluso",
-    ],
-    fullFeatures: [
-      "Links estratégicos organizados por funil de vendas",
-      "Bio persuasiva e foto de perfil/logo",
-      "Chamadas de ação destacadas para WhatsApp/Catálogo",
-      "Links secundários (redes sociais, localização, portfólio)",
-      "Rodapé minimalista com ícones",
-    ],
-    structure: [
-      "Cabeçalho com foto/logo + bio persuasiva",
-      "Botões de ação primários (WhatsApp/Catálogo)",
-      "Links secundários organizados",
-      "Rodapé minimalista com SSL",
-    ],
-  },
-  {
-    id: "landing-page",
-    name: "Landing Page Express",
-    idealFor: "Prestadores de serviços que querem receber tráfego pago com alta conversão.",
-    priceFrom: "R$ 1.000",
-    priceLabel: "A partir de",
-    timeframe: "5 a 7 dias úteis",
+    id: "parceria-mensal",
+    name: "Parceria Mensal",
+    idealFor: "Ideal para quem tem site, landing page ou robôs e quer suporte total sem sustos.",
+    priceFrom: "R$ 229,90",
+    priceLabel: "Investimento",
+    timeframe: "Atendimento em até 12h úteis",
     highlighted: true,
-    badge: "Recomendado",
+    badge: "Mecânico de Plantão",
     keyFeatures: [
-      "Estrutura de conversão completa",
-      "PageSpeed 90+ garantido",
-      "Pixels Meta + Google instalados",
-      "Formulário inteligente (e-mail ou WhatsApp)",
+      "Vigilância Proativa 24h",
+      "Cópia de Segurança (Backup)",
+      "Relatório de Saúde Mensal",
+      "Crédito de 2 Horas Incluso",
     ],
     fullFeatures: [
-      "Headline matadora + benefícios + depoimentos + FAQ",
-      "SEO básico para indexação no Google",
-      "Otimização de velocidade para não desperdiçar cliques",
-      "Conformidade LGPD no rodapé",
+      "Hospedagem inclusa (Plano Web)",
+      "Gestão do servidor do robô (Plano Bot)",
+      "Vigilância 24h contra quedas",
+      "Backups semanais em nuvem",
+      "Ajustes na IA e fluxo de mensagens",
+      "Relatório mensal de performance",
     ],
     structure: [
-      "Hero (headline de impacto + subheadline + CTA)",
-      "Prova social (logos ou destaques)",
-      "Seção de solução (como seu serviço resolve o problema)",
-      "Depoimentos (prints/vídeos de clientes)",
-      "FAQ para quebra de objeções",
-      "Rodapé com links de conformidade (LGPD)",
-    ],
-  },
-  {
-    id: "pagina-pro",
-    name: "Página de Vendas Pro",
-    idealFor: "Infoprodutores e cursos online que buscam automação total da venda ao checkout.",
-    priceFrom: "R$ 2.350",
-    priceLabel: "A partir de",
-    timeframe: "10 a 14 dias úteis",
-    highlighted: false,
-    keyFeatures: [
-      "Design exclusivo e personalizado",
-      "Checkout integrado (Kiwify/Hotmart/Eduzz)",
-      "Página de obrigado + funil pós-venda",
-      "Copywriting refinado por IA",
-    ],
-    fullFeatures: [
-      "VSL (Vídeo de Vendas) na hero",
-      "Detalhamento de módulos e bônus",
-      "Tabela de planos e preços",
-      "Selos de garantia e botões diretos de checkout",
-      "Segurança avançada e proteção contra Brute Force",
-      "Página de obrigado com instruções + suporte",
-    ],
-    structure: [
-      "Hero com VSL (Vídeo de Vendas)",
-      "Transformação do produto",
-      "Módulos e bônus detalhados",
-      "Tabela de planos/preços",
-      "Selos de garantia + botões de checkout",
-      "Página de obrigado + instruções de acesso",
+      "Migração e Setup da Estrutura",
+      "Ativação do Monitoramento 24h",
+      "Configuração de Rotinas de Backup",
+      "Início do Suporte Prioritário",
     ],
   },
 ];
 
 const addons = [
-  { name: "Segurança Cloudflare WAF", price: "+R$ 500", icon: Shield },
-  { name: "Tracking Avançado de Eventos", price: "+R$ 300", icon: BarChart3 },
-  { name: "Identidade Visual Básica", price: "+R$ 450", icon: Palette },
-  { name: "Integração com CRM", price: "A partir de +R$ 500", icon: Target },
+  { name: "Hora Extra Suporte", price: "R$ 120/h", icon: Clock },
+  { name: "Migração de Servidor", price: "R$ 300", icon: Server },
+  { name: "Certificado SSL Extra", price: "R$ 150", icon: Lock },
 ];
 
 const trustPoints = [
-  { icon: Zap, title: "Agilidade com IA", desc: "Semanas, não meses." },
-  { icon: Target, title: "Foco em Lucro", desc: "Ferramenta de faturamento." },
-  { icon: Shield, title: "Comprometimento", desc: "Performance e estabilidade." },
-  { icon: Eye, title: "Transparência", desc: "Você é dono de tudo." },
+  { icon: Zap, title: "Economia Real", desc: "Evite taxas de suporte avulso que custam muito mais caro." },
+  { icon: Star, title: "Prioridade Total", desc: "Quem assina passa na frente de todos em qualquer urgência." },
+  { icon: Target, title: "Paz de Espírito", desc: "O trabalho chato é meu; o lucro e o sossego são seus." },
+  { icon: UserCheck, title: "Resolução Rápida", desc: "Alertas no meu celular me avisam antes de você notar." },
 ];
 
 const techStack = [
-  "Next.js 15", "React", "Vite", "Astro",
-  "Tailwind CSS", "Framer Motion", "Figma",
-  "Cloudflare", "Vercel", "Supabase",
-  "OpenAI API", "Node.js", "TypeScript",
+  "UptimeRobot", "WhatsApp Alerts", "Email Notifications",
+  "Cloudflare", "Professional Hosting", "Cloud Backups",
+  "Data Encryption", "AI Flow Management", "Node.js",
+  "Python", "Docker Monitoring", "Server Management",
 ];
 
 const requirementsFAQ = [
   {
     id: "req-1",
-    title: "Identidade e Conteúdo (Todos os Planos)",
-    items: [
-      "Logotipo em alta resolução ou vetor (se houver)",
-      "Paleta de cores da marca (se houver)",
-      "Textos iniciais e fotos/vídeos dos produtos ou serviços",
-    ],
-  },
-  {
-    id: "req-2",
-    title: "Acessos Técnicos (Landing Page e Pro)",
+    title: "Acessos Necessários",
     items: [
       "Acesso ao painel do domínio (ex: Registro.br)",
-      "Acesso como Admin ao Gerenciador de Negócios (Meta/Facebook) e Google Ads",
-      "Exemplos de sites que você gosta (referências visuais)",
-    ],
-  },
-  {
-    id: "req-3",
-    title: "Estrutura de Vendas (Apenas Plano Pro)",
-    items: [
-      "Links dos produtos nas plataformas de pagamento (Kiwify, Hotmart, etc)",
-      "Detalhes de bônus, garantias e ofertas exclusivas",
+      "Acesso às chaves digitais do sistema, site ou robô",
+      "Acesso administrativo para monitoramento",
     ],
   },
 ];
 
 /* ─── Component ─── */
-export default function SitesQueVendem() {
+export default function SempreComVoce() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* ── Back Button — sticky flush to top ── */}
@@ -211,48 +138,57 @@ export default function SitesQueVendem() {
 
         <div className="relative z-10 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary mx-auto">
-            <Globe className="h-10 w-10" strokeWidth={1.5} />
+            <LifeBuoy className="h-10 w-10" strokeWidth={1.5} />
           </div>
           <h1 className="mt-8 font-display text-fluid-5xl md:text-7xl leading-[1] tracking-[-0.02em]">
-            Sites que <em className="not-italic text-primary">Vendem</em>
+            Sempre com <em className="not-italic text-primary">Você</em>
           </h1>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Páginas de alta performance, otimizadas com Inteligência Artificial e focadas em{" "}
-            <span className="text-foreground font-medium">transformar cliques em clientes.</span>
+          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed italic">
+            "Eu cuido da tecnologia nos bastidores para você focar apenas em vender e fazer sua empresa crescer."
           </p>
         </div>
       </section>
 
-      {/* ── Pricing Cards ── */}
+      {/* ── Intro Message ── */}
+      <section className="px-6 pb-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-muted-foreground leading-relaxed">
+            Ter um site ou um robô é como ter um carro: ele precisa de revisão para não quebrar no meio da estrada. 
+            Com esse plano, eu viro o <strong>"mecânico de plantão"</strong> da sua estrutura digital.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Pricing Card ── */}
       <section className="px-6 pb-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-5">
+        <div className="max-w-md mx-auto">
           {plans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
           ))}
         </div>
       </section>
 
-      {/* ── Monthly Plan ── */}
+      {/* ── Special Benefit — The "Present" ── */}
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
-          <Card className="border-border/50 bg-card/15 overflow-hidden">
+          <Card className="border-border/50 bg-card/15 overflow-hidden border-primary/20">
             <CardContent className="p-8 md:flex md:items-center md:justify-between gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <HeadphonesIcon className="h-5 w-5" strokeWidth={1.5} />
+                    <Sparkles className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Plano de Performance e Continuidade</h3>
-                    <p className="text-xs text-muted-foreground">A assinatura que mantém sua máquina de vendas rodando.</p>
+                    <h3 className="font-bold text-lg">🎁 Crédito de 2 Horas Mensais</h3>
+                    <p className="text-xs text-muted-foreground">Um presente para pequenas mudanças sem custo extra.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                   {[
-                    { icon: Server, label: "Hospedagem gerenciada" },
-                    { icon: Eye, label: "Vigilância 24/7" },
-                    { icon: Lock, label: "Backups regulares" },
-                    { icon: FileText, label: "Relatório mensal" },
+                    { icon: Bell, label: "Vigilância 24h" },
+                    { icon: HardDrive, label: "Cópia (Backup)" },
+                    { icon: Activity, label: "Relatório Mensal" },
+                    { icon: Sparkles, label: "Crédito 2 Horas" },
                   ].map(({ icon: Icon, label }) => (
                     <div key={label} className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Icon className="h-3.5 w-3.5 text-primary flex-shrink-0" />
@@ -261,17 +197,19 @@ export default function SitesQueVendem() {
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">
-                  + Suporte prioritário com até 2h mensais para pequenos ajustes.
+                  Use seu crédito para trocar uma foto, mudar um preço ou escrever um texto novo. 
+                  Eu conserto a maioria dos problemas antes mesmo de você notar.
                 </p>
               </div>
               <div className="mt-6 md:mt-0 text-center md:text-right flex-shrink-0">
-                <div className="text-3xl font-bold">
-                  R$ 229,90<span className="text-base font-normal text-muted-foreground">/mês</span>
+                <div className="text-sm text-muted-foreground mb-1 italic">Vantagem inclusa</div>
+                <div className="text-2xl font-bold text-primary">
+                  Paz de Espírito
                 </div>
                 <WhatsAppCTA
-                  source="servico-sites-venda-mensal"
+                  source="servico-manutencao-paz-espirito"
                   size="sm"
-                  message="Olá Victor! Quero saber mais sobre o plano mensal de continuidade."
+                  message="Olá Victor! Quero saber mais sobre como funciona o crédito de 2 horas no plano Sempre com Você."
                   className="mt-4"
                 />
               </div>
@@ -284,9 +222,9 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-6">
-            Personalize seu <em className="not-italic text-primary">projeto</em>
+            Serviços <em className="not-italic text-primary">Avulsos</em> (Para quem não assina)
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {addons.map(({ name, price, icon: Icon }) => (
               <div
                 key={name}
@@ -298,6 +236,9 @@ export default function SitesQueVendem() {
               </div>
             ))}
           </div>
+          <p className="mt-4 text-xs text-muted-foreground italic">
+            *Assinantes têm descontos exclusivos e prioridade nesses serviços.
+          </p>
         </div>
       </section>
 
@@ -307,7 +248,7 @@ export default function SitesQueVendem() {
       <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-8 text-center">
-            Por que me <em className="not-italic text-primary">escolher?</em>
+            Por que vale a <em className="not-italic text-primary">pena assinar?</em>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {trustPoints.map(({ icon: Icon, title, desc }) => (
@@ -329,7 +270,7 @@ export default function SitesQueVendem() {
           <h2 className="font-display text-fluid-3xl mb-2">
             O que eu preciso de <em className="not-italic text-primary">você</em>
           </h2>
-          <p className="text-muted-foreground text-sm mb-6">Para começarmos o projeto.</p>
+          <p className="text-muted-foreground text-sm mb-6">Para poder vigiar e cuidar da sua estrutura digital com excelência.</p>
 
           <Accordion type="multiple" className="w-full">
             {requirementsFAQ.map((req) => (
@@ -357,7 +298,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
-            Tecnologias de Elite
+            Tecnologias de Monitoramento
           </h3>
           <div className="flex flex-wrap justify-center gap-2">
             {techStack.map((tech) => (
@@ -376,16 +317,15 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-fluid-4xl mb-4">
-            Pronto para ter um site que{" "}
-            <em className="not-italic text-primary">realmente vende?</em>
+            Pare de se preocupar com <em className="not-italic text-primary">códigos e servidores.</em>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Vamos conversar sobre o seu projeto. Sem compromisso, sem enrolação.
+            Deixe o trabalho técnico comigo e foque no que importa: o lucro do seu negócio.
           </p>
           <WhatsAppCTA
-            source="servico-sites-venda-final"
+            source="servico-manutencao-final"
             size="lg"
-            message="Olá Victor! Quero um site que vende de verdade. Vim da página de serviços."
+            message="Olá Victor! Quero assinar o plano Sempre com Você para garantir que meu sistema nunca pare."
           />
         </div>
       </section>
@@ -423,7 +363,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
         {/* Price */}
         <div className="my-4">
           <span className="text-xs text-muted-foreground">{plan.priceLabel}</span>
-          <div className="text-3xl font-bold mt-0.5">{plan.priceFrom}</div>
+          <div className="text-3xl font-bold mt-0.5">{plan.priceFrom}<span className="text-base font-normal text-muted-foreground">/mês</span></div>
           <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
             <Clock className="h-3 w-3" />
             {plan.timeframe}
@@ -461,7 +401,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           </AccordionItem>
           <AccordionItem value="structure" className="border-border/30">
             <AccordionTrigger className="text-xs text-primary font-bold py-2 hover:no-underline">
-              Estrutura da página
+              Processo de Cuidado
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2">
@@ -481,9 +421,9 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
         {/* CTA */}
         <div className="mt-5">
           <WhatsAppCTA
-            source={`servico-sites-venda-${plan.id}`}
+            source={`servico-manutencao-${plan.id}`}
             size="sm"
-            message={`Olá Victor! Tenho interesse no plano ${plan.name}. Vim da página de serviços.`}
+            message={`Olá Victor! Tenho interesse no ${plan.name} do serviço Sempre com Você.`}
             className="w-full"
           />
         </div>

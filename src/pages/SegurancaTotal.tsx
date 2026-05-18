@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
-  Globe,
+  ShieldCheck,
   CheckCircle2,
   Zap,
   Target,
@@ -12,11 +12,14 @@ import {
   Star,
   ChevronRight,
   Server,
-  Palette,
-  BarChart3,
   Lock,
-  FileText,
-  HeadphonesIcon,
+  Mail,
+  Bug,
+  Globe,
+  Bell,
+  HardDrive,
+  Activity,
+  UserCheck,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -47,148 +50,138 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "bio-link",
-    name: "Bio-Link Estratégico",
-    idealFor: "Profissionais e pequenos negócios que precisam centralizar sua presença digital.",
+    id: "cadeado-verde",
+    name: "O Cadeado Verde",
+    idealFor: "Para quem acabou de criar o site e quer que ele apareça como \"Seguro\" no Google para passar confiança.",
     priceFrom: "R$ 300",
-    priceLabel: "A partir de",
-    timeframe: "2 a 3 dias úteis",
+    priceLabel: "Taxa única",
+    timeframe: "24h a 48h",
     highlighted: false,
     keyFeatures: [
-      "Design Mobile-First otimizado",
-      "Botão de WhatsApp flutuante e animado",
-      "Domínio próprio configurado",
-      "Certificado SSL incluso",
+      "Instalação de Certificado SSL",
+      "Configuração Cloudflare",
+      "Proteção básica contra bots",
+      "Cadeado de segurança ativo",
     ],
     fullFeatures: [
-      "Links estratégicos organizados por funil de vendas",
-      "Bio persuasiva e foto de perfil/logo",
-      "Chamadas de ação destacadas para WhatsApp/Catálogo",
-      "Links secundários (redes sociais, localização, portfólio)",
-      "Rodapé minimalista com ícones",
+      "Certificado SSL (Cadeado Verde)",
+      "Configuração de DNS via Cloudflare",
+      "Proteção básica contra ataques de negação (DDoS)",
+      "Redirecionamento automático HTTP para HTTPS",
+      "Otimização inicial de carregamento",
     ],
     structure: [
-      "Cabeçalho com foto/logo + bio persuasiva",
-      "Botões de ação primários (WhatsApp/Catálogo)",
-      "Links secundários organizados",
-      "Rodapé minimalista com SSL",
+      "Apontamento de DNS",
+      "Ativação do SSL Universal",
+      "Regras básicas de Firewall",
+      "Validação de segurança no navegador",
     ],
   },
   {
-    id: "landing-page",
-    name: "Landing Page Express",
-    idealFor: "Prestadores de serviços que querem receber tráfego pago com alta conversão.",
-    priceFrom: "R$ 1.000",
-    priceLabel: "A partir de",
-    timeframe: "5 a 7 dias úteis",
+    id: "blindagem-dados",
+    name: "A Blindagem de Dados",
+    idealFor: "Para quem guarda informações de clientes e não pode nem pensar em perder o site ou ser invadido.",
+    priceFrom: "R$ 800",
+    priceLabel: "Taxa única",
+    timeframe: "3 a 5 dias",
     highlighted: true,
-    badge: "Recomendado",
+    badge: "Mais Procurado",
     keyFeatures: [
-      "Estrutura de conversão completa",
-      "PageSpeed 90+ garantido",
-      "Pixels Meta + Google instalados",
-      "Formulário inteligente (e-mail ou WhatsApp)",
+      "Tudo do plano básico",
+      "Muros extras (Regras WAF)",
+      "Backup Automático configurado",
+      "Recuperação rápida do site",
     ],
     fullFeatures: [
-      "Headline matadora + benefícios + depoimentos + FAQ",
-      "SEO básico para indexação no Google",
-      "Otimização de velocidade para não desperdiçar cliques",
-      "Conformidade LGPD no rodapé",
+      "Configuração de Regras de Firewall (WAF) personalizadas",
+      "Sistema de Backup Automático (Nuvem/Off-site)",
+      "Proteção de diretórios sensíveis",
+      "Ocultação de versão do CMS/Servidor",
+      "Bloqueio de países ou IPs suspeitos",
+      "Recuperação de desastres em minutos",
     ],
     structure: [
-      "Hero (headline de impacto + subheadline + CTA)",
-      "Prova social (logos ou destaques)",
-      "Seção de solução (como seu serviço resolve o problema)",
-      "Depoimentos (prints/vídeos de clientes)",
-      "FAQ para quebra de objeções",
-      "Rodapé com links de conformidade (LGPD)",
+      "Análise de vulnerabilidades superficiais",
+      "Implementação de muros WAF",
+      "Configuração de rotinas de backup",
+      "Teste de restauração de dados",
     ],
   },
   {
-    id: "pagina-pro",
-    name: "Página de Vendas Pro",
-    idealFor: "Infoprodutores e cursos online que buscam automação total da venda ao checkout.",
-    priceFrom: "R$ 2.350",
-    priceLabel: "A partir de",
-    timeframe: "10 a 14 dias úteis",
+    id: "alarme-invasao",
+    name: "O Alarme de Invasão",
+    idealFor: "Para empresas que não podem ficar fora do ar e querem ser avisadas de qualquer perigo real.",
+    priceFrom: "R$ 1.400",
+    priceLabel: "Taxa única",
+    timeframe: "7 a 10 dias",
     highlighted: false,
     keyFeatures: [
-      "Design exclusivo e personalizado",
-      "Checkout integrado (Kiwify/Hotmart/Eduzz)",
-      "Página de obrigado + funil pós-venda",
-      "Copywriting refinado por IA",
+      "Limpeza profunda de código",
+      "Proteção avançada anti-hacker",
+      "Alarme Inteligente por e-mail",
+      "Vigilância Premium",
     ],
     fullFeatures: [
-      "VSL (Vídeo de Vendas) na hero",
-      "Detalhamento de módulos e bônus",
-      "Tabela de planos e preços",
-      "Selos de garantia e botões diretos de checkout",
-      "Segurança avançada e proteção contra Brute Force",
-      "Página de obrigado com instruções + suporte",
+      "Auditoria completa de brechas no código",
+      "Instalação de Alarme Inteligente (Notificação em tempo real)",
+      "Monitoramento de integridade de arquivos",
+      "Regras avançadas de contenção de ataques",
+      "Remoção de backdoors e scripts maliciosos",
+      "Suporte prioritário pós-instalação",
     ],
     structure: [
-      "Hero com VSL (Vídeo de Vendas)",
-      "Transformação do produto",
-      "Módulos e bônus detalhados",
-      "Tabela de planos/preços",
-      "Selos de garantia + botões de checkout",
-      "Página de obrigado + instruções de acesso",
+      "Limpeza profunda e remoção de brechas",
+      "Instalação do sistema de alarme inteligente",
+      "Configuração de alertas imediatos",
+      "Endurecimento (Hardening) total do sistema",
     ],
   },
 ];
 
 const addons = [
-  { name: "Segurança Cloudflare WAF", price: "+R$ 500", icon: Shield },
-  { name: "Tracking Avançado de Eventos", price: "+R$ 300", icon: BarChart3 },
-  { name: "Identidade Visual Básica", price: "+R$ 450", icon: Palette },
-  { name: "Integração com CRM", price: "A partir de +R$ 500", icon: Target },
+  { name: "E-mail Profissional", price: "+R$ 150", icon: Mail },
+  { name: "Limpeza de Vírus", price: "+R$ 500", icon: Bug },
+  { name: "Apontamento de Nome", price: "+R$ 100", icon: Globe },
+  { name: "Configuração de CDN", price: "Incluso", icon: Zap },
 ];
 
 const trustPoints = [
-  { icon: Zap, title: "Agilidade com IA", desc: "Semanas, não meses." },
-  { icon: Target, title: "Foco em Lucro", desc: "Ferramenta de faturamento." },
-  { icon: Shield, title: "Comprometimento", desc: "Performance e estabilidade." },
-  { icon: Eye, title: "Transparência", desc: "Você é dono de tudo." },
+  { icon: Eye, title: "Transparência", desc: "Uso as melhores ferramentas e cobro pela configuração." },
+  { icon: ShieldCheck, title: "Foco em Estabilidade", desc: "Durma tranquilo sabendo que cuidamos da sua porta." },
+  { icon: UserCheck, title: "Você é o Dono", desc: "Todas as contas ficam no seu nome. A chave é sua." },
+  { icon: Lock, title: "Segurança Real", desc: "Padrões de grandes empresas no seu negócio." },
 ];
 
 const techStack = [
-  "Next.js 15", "React", "Vite", "Astro",
-  "Tailwind CSS", "Framer Motion", "Figma",
-  "Cloudflare", "Vercel", "Supabase",
-  "OpenAI API", "Node.js", "TypeScript",
+  "Cloudflare", "WAF Rules", "SSL/TLS", "BitNinja",
+  "Wordfence", "Sucuri", "Linux Hardening",
+  "Automated Backups", "S3 Storage", "DNS Management",
+  "Vulnerability Scanning", "IP Filtering", "Bot Shield",
 ];
 
 const requirementsFAQ = [
   {
     id: "req-1",
-    title: "Identidade e Conteúdo (Todos os Planos)",
+    title: "Acessos Necessários",
     items: [
-      "Logotipo em alta resolução ou vetor (se houver)",
-      "Paleta de cores da marca (se houver)",
-      "Textos iniciais e fotos/vídeos dos produtos ou serviços",
+      "Acesso ao painel do domínio (ex: Registro.br)",
+      "Acesso ao painel da hospedagem ou servidor VPS",
+      "Acesso administrativo ao site (WordPress, etc)",
     ],
   },
   {
     id: "req-2",
-    title: "Acessos Técnicos (Landing Page e Pro)",
+    title: "Informações do Sistema",
     items: [
-      "Acesso ao painel do domínio (ex: Registro.br)",
-      "Acesso como Admin ao Gerenciador de Negócios (Meta/Facebook) e Google Ads",
-      "Exemplos de sites que você gosta (referências visuais)",
-    ],
-  },
-  {
-    id: "req-3",
-    title: "Estrutura de Vendas (Apenas Plano Pro)",
-    items: [
-      "Links dos produtos nas plataformas de pagamento (Kiwify, Hotmart, etc)",
-      "Detalhes de bônus, garantias e ofertas exclusivas",
+      "Histórico de invasões ou ataques recentes",
+      "Onde os dados dos clientes são armazenados",
+      "Configurações atuais de backup (se existirem)",
     ],
   },
 ];
 
 /* ─── Component ─── */
-export default function SitesQueVendem() {
+export default function SegurancaTotal() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* ── Back Button — sticky flush to top ── */}
@@ -211,14 +204,13 @@ export default function SitesQueVendem() {
 
         <div className="relative z-10 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary mx-auto">
-            <Globe className="h-10 w-10" strokeWidth={1.5} />
+            <ShieldCheck className="h-10 w-10" strokeWidth={1.5} />
           </div>
           <h1 className="mt-8 font-display text-fluid-5xl md:text-7xl leading-[1] tracking-[-0.02em]">
-            Sites que <em className="not-italic text-primary">Vendem</em>
+            Segurança <em className="not-italic text-primary">Total</em>
           </h1>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Páginas de alta performance, otimizadas com Inteligência Artificial e focadas em{" "}
-            <span className="text-foreground font-medium">transformar cliques em clientes.</span>
+          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed italic">
+            "Eu protejo o seu site com as mesmas ferramentas que as grandes empresas usam, mas de um jeito que cabe no seu bolso."
           </p>
         </div>
       </section>
@@ -235,24 +227,24 @@ export default function SitesQueVendem() {
       {/* ── Monthly Plan ── */}
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
-          <Card className="border-border/50 bg-card/15 overflow-hidden">
+          <Card className="border-border/50 bg-card/15 overflow-hidden border-primary/20">
             <CardContent className="p-8 md:flex md:items-center md:justify-between gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <HeadphonesIcon className="h-5 w-5" strokeWidth={1.5} />
+                    <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Plano de Performance e Continuidade</h3>
-                    <p className="text-xs text-muted-foreground">A assinatura que mantém sua máquina de vendas rodando.</p>
+                    <h3 className="font-bold text-lg">🛡️ O seu Seguro Digital</h3>
+                    <p className="text-xs text-muted-foreground">Segurança não é algo que você faz uma vez e pronto. É preciso vigilância constante.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                   {[
-                    { icon: Server, label: "Hospedagem gerenciada" },
-                    { icon: Eye, label: "Vigilância 24/7" },
-                    { icon: Lock, label: "Backups regulares" },
-                    { icon: FileText, label: "Relatório mensal" },
+                    { icon: Bell, label: "Vigilância 24h" },
+                    { icon: HardDrive, label: "Gestão de Backup" },
+                    { icon: Activity, label: "Relatório de Saúde" },
+                    { icon: Sparkles, label: "Ajustes Rápidos (2h)" },
                   ].map(({ icon: Icon, label }) => (
                     <div key={label} className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Icon className="h-3.5 w-3.5 text-primary flex-shrink-0" />
@@ -261,17 +253,17 @@ export default function SitesQueVendem() {
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">
-                  + Suporte prioritário com até 2h mensais para pequenos ajustes.
+                  Eu sou avisado se o seu site balançar, verifico backups toda semana e te mando um relatório mensal de bloqueios e saúde.
                 </p>
               </div>
               <div className="mt-6 md:mt-0 text-center md:text-right flex-shrink-0">
                 <div className="text-3xl font-bold">
-                  R$ 229,90<span className="text-base font-normal text-muted-foreground">/mês</span>
+                  R$ 159,90<span className="text-base font-normal text-muted-foreground">/mês</span>
                 </div>
                 <WhatsAppCTA
-                  source="servico-sites-venda-mensal"
+                  source="servico-seguranca-seguro-digital"
                   size="sm"
-                  message="Olá Victor! Quero saber mais sobre o plano mensal de continuidade."
+                  message="Olá Victor! Quero assinar o Seguro Digital para manter meu site protegido."
                   className="mt-4"
                 />
               </div>
@@ -284,7 +276,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-6">
-            Personalize seu <em className="not-italic text-primary">projeto</em>
+            Coisas <em className="not-italic text-primary">Extras</em> que Você Pode Adicionar
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {addons.map(({ name, price, icon: Icon }) => (
@@ -329,7 +321,7 @@ export default function SitesQueVendem() {
           <h2 className="font-display text-fluid-3xl mb-2">
             O que eu preciso de <em className="not-italic text-primary">você</em>
           </h2>
-          <p className="text-muted-foreground text-sm mb-6">Para começarmos o projeto.</p>
+          <p className="text-muted-foreground text-sm mb-6">Para garantir a blindagem completa do seu patrimônio digital.</p>
 
           <Accordion type="multiple" className="w-full">
             {requirementsFAQ.map((req) => (
@@ -357,7 +349,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
-            Tecnologias de Elite
+            Tecnologias de Proteção
           </h3>
           <div className="flex flex-wrap justify-center gap-2">
             {techStack.map((tech) => (
@@ -376,16 +368,15 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-fluid-4xl mb-4">
-            Pronto para ter um site que{" "}
-            <em className="not-italic text-primary">realmente vende?</em>
+            Pronto para ter um <em className="not-italic text-primary">site blindado?</em>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Vamos conversar sobre o seu projeto. Sem compromisso, sem enrolação.
+            Não espere ser atacado para agir. Proteja seu negócio hoje mesmo com tecnologia de ponta.
           </p>
           <WhatsAppCTA
-            source="servico-sites-venda-final"
+            source="servico-seguranca-final"
             size="lg"
-            message="Olá Victor! Quero um site que vende de verdade. Vim da página de serviços."
+            message="Olá Victor! Quero proteger meu site com o serviço de Segurança Total. Vim da página de serviços."
           />
         </div>
       </section>
@@ -461,7 +452,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           </AccordionItem>
           <AccordionItem value="structure" className="border-border/30">
             <AccordionTrigger className="text-xs text-primary font-bold py-2 hover:no-underline">
-              Estrutura da página
+              Processo de Blindagem
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2">
@@ -481,9 +472,9 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
         {/* CTA */}
         <div className="mt-5">
           <WhatsAppCTA
-            source={`servico-sites-venda-${plan.id}`}
+            source={`servico-seguranca-${plan.id}`}
             size="sm"
-            message={`Olá Victor! Tenho interesse no plano ${plan.name}. Vim da página de serviços.`}
+            message={`Olá Victor! Tenho interesse no plano ${plan.name} de Segurança Total.`}
             className="w-full"
           />
         </div>

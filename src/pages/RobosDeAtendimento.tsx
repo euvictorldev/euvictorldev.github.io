@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
-  Globe,
+  Bot,
   CheckCircle2,
   Zap,
   Target,
@@ -13,10 +13,10 @@ import {
   ChevronRight,
   Server,
   Palette,
-  BarChart3,
   Lock,
-  FileText,
-  HeadphonesIcon,
+  MessageCircle,
+  Layout,
+  ShieldCheck,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -47,148 +47,147 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "bio-link",
-    name: "Bio-Link Estratégico",
-    idealFor: "Profissionais e pequenos negócios que precisam centralizar sua presença digital.",
+    id: "robo-porteiro",
+    name: "O Robô Porteiro",
+    idealFor: "Se você recebe muitas mensagens parecidas e quer organizar a entrada da sua loja digital rapidinho.",
     priceFrom: "R$ 300",
     priceLabel: "A partir de",
-    timeframe: "2 a 3 dias úteis",
+    timeframe: "2 a 4 dias úteis",
     highlighted: false,
     keyFeatures: [
-      "Design Mobile-First otimizado",
-      "Botão de WhatsApp flutuante e animado",
-      "Domínio próprio configurado",
-      "Certificado SSL incluso",
+      "Olá educado + Botões de menu",
+      "Respostas para perguntas frequentes",
+      "Alerta no celular para humanos",
+      "Proteção contra banimentos",
     ],
     fullFeatures: [
-      "Links estratégicos organizados por funil de vendas",
-      "Bio persuasiva e foto de perfil/logo",
-      "Chamadas de ação destacadas para WhatsApp/Catálogo",
-      "Links secundários (redes sociais, localização, portfólio)",
-      "Rodapé minimalista com ícones",
+      "Integração direta com WhatsApp",
+      "Configuração de menu interativo",
+      "Base de conhecimento inicial",
+      "Alerta via Webhook (Celular)",
+      "Segurança: Proteção Aprimorada",
     ],
     structure: [
-      "Cabeçalho com foto/logo + bio persuasiva",
-      "Botões de ação primários (WhatsApp/Catálogo)",
-      "Links secundários organizados",
-      "Rodapé minimalista com SSL",
+      "Fluxo de boas-vindas",
+      "Menu de opções (1, 2, 3...)",
+      "Lógica de transbordo humano",
+      "Encerramento automático",
     ],
   },
   {
-    id: "landing-page",
-    name: "Landing Page Express",
-    idealFor: "Prestadores de serviços que querem receber tráfego pago com alta conversão.",
-    priceFrom: "R$ 1.000",
+    id: "robo-organizador",
+    name: "O Robô Organizador",
+    idealFor: "Para você que quer profissionalizar suas vendas e ter o controle total de quem te chama.",
+    priceFrom: "R$ 1.600",
     priceLabel: "A partir de",
-    timeframe: "5 a 7 dias úteis",
+    timeframe: "6 a 9 dias úteis",
     highlighted: true,
-    badge: "Recomendado",
+    badge: "Mais Vendido",
     keyFeatures: [
-      "Estrutura de conversão completa",
-      "PageSpeed 90+ garantido",
-      "Pixels Meta + Google instalados",
-      "Formulário inteligente (e-mail ou WhatsApp)",
+      "Filtro de Nome, E-mail e Interesse",
+      "Painel de Gestão (Dashboard)",
+      "Limpeza automática de chat",
+      "Estatísticas e Exportação",
     ],
     fullFeatures: [
-      "Headline matadora + benefícios + depoimentos + FAQ",
-      "SEO básico para indexação no Google",
-      "Otimização de velocidade para não desperdiçar cliques",
-      "Conformidade LGPD no rodapé",
+      "Secretário digital que filtra leads",
+      "Notificação via Discord/Telegram/Webhooks",
+      "Painel web para monitoramento em tempo real",
+      "Gráficos de novos clientes e horários de pico",
+      "Exportação para Google Planilhas ou CSV",
+      "Proteção Aprimorada contra banimentos",
     ],
     structure: [
-      "Hero (headline de impacto + subheadline + CTA)",
-      "Prova social (logos ou destaques)",
-      "Seção de solução (como seu serviço resolve o problema)",
-      "Depoimentos (prints/vídeos de clientes)",
-      "FAQ para quebra de objeções",
-      "Rodapé com links de conformidade (LGPD)",
+      "Fluxo de triagem e coleta de dados",
+      "Integração com CRM/Planilha",
+      "Dashboard de atendimentos pendentes",
+      "Sistema de notificações inteligentes",
     ],
   },
   {
-    id: "pagina-pro",
-    name: "Página de Vendas Pro",
-    idealFor: "Infoprodutores e cursos online que buscam automação total da venda ao checkout.",
-    priceFrom: "R$ 2.350",
+    id: "super-robo",
+    name: "O Super Robô (IA)",
+    idealFor: "Se você quer que o robô converse de verdade, tire dúvidas difíceis e pareça uma pessoa real.",
+    priceFrom: "R$ 3.200",
     priceLabel: "A partir de",
-    timeframe: "10 a 14 dias úteis",
+    timeframe: "12 a 18 dias úteis",
     highlighted: false,
     keyFeatures: [
-      "Design exclusivo e personalizado",
-      "Checkout integrado (Kiwify/Hotmart/Eduzz)",
-      "Página de obrigado + funil pós-venda",
-      "Copywriting refinado por IA",
+      "IA com conversa natural",
+      "Cérebro de Reserva (LiteLLM)",
+      "Lê manuais e responde dúvidas",
+      "Encaminhamento inteligente",
     ],
     fullFeatures: [
-      "VSL (Vídeo de Vendas) na hero",
-      "Detalhamento de módulos e bônus",
-      "Tabela de planos e preços",
-      "Selos de garantia e botões diretos de checkout",
-      "Segurança avançada e proteção contra Brute Force",
-      "Página de obrigado com instruções + suporte",
+      "Treinamento com documentos/PDFs da empresa",
+      "Processamento de Linguagem Natural (LLM)",
+      "Failover automático de cérebro (Redundância)",
+      "Encaminhamento para Vendas/Suporte/Setores",
+      "Análise de sentimento e intenção",
+      "Proteção máxima contra banimentos",
     ],
     structure: [
-      "Hero com VSL (Vídeo de Vendas)",
-      "Transformação do produto",
-      "Módulos e bônus detalhados",
-      "Tabela de planos/preços",
-      "Selos de garantia + botões de checkout",
-      "Página de obrigado + instruções de acesso",
+      "Cérebro central (GPT/Claude/LiteLLM)",
+      "Roteamento inteligente de intenções",
+      "Integração com manuais internos",
+      "Fallback para transbordo humano rápido",
     ],
   },
 ];
 
 const addons = [
-  { name: "Segurança Cloudflare WAF", price: "+R$ 500", icon: Shield },
-  { name: "Tracking Avançado de Eventos", price: "+R$ 300", icon: BarChart3 },
-  { name: "Identidade Visual Básica", price: "+R$ 450", icon: Palette },
-  { name: "Integração com CRM", price: "A partir de +R$ 500", icon: Target },
+  { name: "Robô em Todo Lugar (Omnichannel)", price: "+R$ 700", icon: MessageCircle },
+  { name: "Sua Marca Bonita (Design)", price: "+R$ 450", icon: Palette },
+  { name: "API Oficial (Meta Business)", price: "+R$ 600", icon: ShieldCheck },
+  { name: "Dashboard Customizado", price: "Sob consulta", icon: Layout },
 ];
 
 const trustPoints = [
-  { icon: Zap, title: "Agilidade com IA", desc: "Semanas, não meses." },
-  { icon: Target, title: "Foco em Lucro", desc: "Ferramenta de faturamento." },
-  { icon: Shield, title: "Comprometimento", desc: "Performance e estabilidade." },
-  { icon: Eye, title: "Transparência", desc: "Você é dono de tudo." },
+  { icon: Target, title: "Foco no seu Lucro", desc: "Eu não vendo código, entrego faturamento." },
+  { icon: Zap, title: "Entrega Rápida", desc: "Uso tecnologias de elite para semanas, não meses." },
+  { icon: Shield, title: "Resolução Analítica", desc: "Estabilidade técnica e rotas de segurança." },
+  { icon: Eye, title: "Você é o Dono", desc: "Dados e contas são seus. Transparência total." },
 ];
 
 const techStack = [
-  "Next.js 15", "React", "Vite", "Astro",
-  "Tailwind CSS", "Framer Motion", "Figma",
-  "Cloudflare", "Vercel", "Supabase",
-  "OpenAI API", "Node.js", "TypeScript",
+  "n8n", "Typebot", "OpenAI", "Claude",
+  "LiteLLM", "Cloudflare", "VPS Linux",
+  "Discord Webhooks", "Telegram API", "Chatwoot",
+  "Evolution API", "HubSpot", "Pipedrive",
 ];
 
 const requirementsFAQ = [
   {
     id: "req-1",
-    title: "Identidade e Conteúdo (Todos os Planos)",
+    title: "Dados e Acessos Iniciais",
     items: [
-      "Logotipo em alta resolução ou vetor (se houver)",
-      "Paleta de cores da marca (se houver)",
-      "Textos iniciais e fotos/vídeos dos produtos ou serviços",
+      "Descrição detalhada do fluxo de atendimento",
+      "Perguntas mais frequentes (FAQ) dos clientes",
+      "Acesso ao WhatsApp Business ou conta Discord",
     ],
   },
   {
     id: "req-2",
-    title: "Acessos Técnicos (Landing Page e Pro)",
+    title: "Documentação para IA (Plano Super Robô)",
     items: [
-      "Acesso ao painel do domínio (ex: Registro.br)",
-      "Acesso como Admin ao Gerenciador de Negócios (Meta/Facebook) e Google Ads",
-      "Exemplos de sites que você gosta (referências visuais)",
+      "Manuais de produto, tabelas de preços ou guias de suporte",
+      "Exemplos de como você gostaria que o robô respondesse",
+      "Lista de contatos para transbordo humano",
     ],
   },
   {
     id: "req-3",
-    title: "Estrutura de Vendas (Apenas Plano Pro)",
+    title: "Integrações Externas",
     items: [
-      "Links dos produtos nas plataformas de pagamento (Kiwify, Hotmart, etc)",
-      "Detalhes de bônus, garantias e ofertas exclusivas",
+      "Acesso às APIs do seu CRM (HubSpot, Pipedrive, etc)",
+      "Webhook do Discord ou Telegram para notificações",
+      "Dados da sua VPS ou conta Cloud (posso ajudar a criar)",
     ],
   },
 ];
 
 /* ─── Component ─── */
-export default function SitesQueVendem() {
+export default function RobosDeAtendimento() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* ── Back Button — sticky flush to top ── */}
@@ -211,14 +210,13 @@ export default function SitesQueVendem() {
 
         <div className="relative z-10 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary mx-auto">
-            <Globe className="h-10 w-10" strokeWidth={1.5} />
+            <Bot className="h-10 w-10" strokeWidth={1.5} />
           </div>
           <h1 className="mt-8 font-display text-fluid-5xl md:text-7xl leading-[1] tracking-[-0.02em]">
-            Sites que <em className="not-italic text-primary">Vendem</em>
+            Robôs de <em className="not-italic text-primary">Atendimento</em>
           </h1>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Páginas de alta performance, otimizadas com Inteligência Artificial e focadas em{" "}
-            <span className="text-foreground font-medium">transformar cliques em clientes.</span>
+          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed italic">
+            "Imagine ter um funcionário que nunca dorme, nunca reclama e atende todos os seus clientes em segundos no WhatsApp, Instagram ou Telegram."
           </p>
         </div>
       </section>
@@ -235,24 +233,24 @@ export default function SitesQueVendem() {
       {/* ── Monthly Plan ── */}
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
-          <Card className="border-border/50 bg-card/15 overflow-hidden">
+          <Card className="border-border/50 bg-card/15 overflow-hidden border-primary/20">
             <CardContent className="p-8 md:flex md:items-center md:justify-between gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <HeadphonesIcon className="h-5 w-5" strokeWidth={1.5} />
+                    <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Plano de Performance e Continuidade</h3>
-                    <p className="text-xs text-muted-foreground">A assinatura que mantém sua máquina de vendas rodando.</p>
+                    <h3 className="font-bold text-lg">🛡️ O seu Seguro Digital</h3>
+                    <p className="text-xs text-muted-foreground">Eu cuido da tecnologia para você focar apenas em vender e crescer.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                   {[
-                    { icon: Server, label: "Hospedagem gerenciada" },
-                    { icon: Eye, label: "Vigilância 24/7" },
-                    { icon: Lock, label: "Backups regulares" },
-                    { icon: FileText, label: "Relatório mensal" },
+                    { icon: Eye, label: "Vigilância 24h" },
+                    { icon: Lock, label: "Cópia de Segurança" },
+                    { icon: Server, label: "Hospedagem Inclusa" },
+                    { icon: Clock, label: "Sempre Atualizado (2h/mês)" },
                   ].map(({ icon: Icon, label }) => (
                     <div key={label} className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Icon className="h-3.5 w-3.5 text-primary flex-shrink-0" />
@@ -261,7 +259,7 @@ export default function SitesQueVendem() {
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">
-                  + Suporte prioritário com até 2h mensais para pequenos ajustes.
+                  Monitoramento constante, consertos preventivos e suporte para trocas de textos e preços.
                 </p>
               </div>
               <div className="mt-6 md:mt-0 text-center md:text-right flex-shrink-0">
@@ -269,9 +267,9 @@ export default function SitesQueVendem() {
                   R$ 229,90<span className="text-base font-normal text-muted-foreground">/mês</span>
                 </div>
                 <WhatsAppCTA
-                  source="servico-sites-venda-mensal"
+                  source="servico-robos-seguro-digital"
                   size="sm"
-                  message="Olá Victor! Quero saber mais sobre o plano mensal de continuidade."
+                  message="Olá Victor! Quero saber mais sobre o Seguro Digital para o meu robô."
                   className="mt-4"
                 />
               </div>
@@ -284,7 +282,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-6">
-            Personalize seu <em className="not-italic text-primary">projeto</em>
+            Coisas <em className="not-italic text-primary">Extras</em> que Você Pode Adicionar
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {addons.map(({ name, price, icon: Icon }) => (
@@ -329,7 +327,7 @@ export default function SitesQueVendem() {
           <h2 className="font-display text-fluid-3xl mb-2">
             O que eu preciso de <em className="not-italic text-primary">você</em>
           </h2>
-          <p className="text-muted-foreground text-sm mb-6">Para começarmos o projeto.</p>
+          <p className="text-muted-foreground text-sm mb-6">Para darmos vida ao seu atendimento automatizado.</p>
 
           <Accordion type="multiple" className="w-full">
             {requirementsFAQ.map((req) => (
@@ -357,7 +355,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
-            Tecnologias de Elite
+            Tecnologias que Utilizamos
           </h3>
           <div className="flex flex-wrap justify-center gap-2">
             {techStack.map((tech) => (
@@ -376,16 +374,15 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-fluid-4xl mb-4">
-            Pronto para ter um site que{" "}
-            <em className="not-italic text-primary">realmente vende?</em>
+            Pronto para ter um <em className="not-italic text-primary">atendimento 24h?</em>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Vamos conversar sobre o seu projeto. Sem compromisso, sem enrolação.
+            Automatize seus processos e foque no que realmente importa: escalar seu negócio.
           </p>
           <WhatsAppCTA
-            source="servico-sites-venda-final"
+            source="servico-robos-final"
             size="lg"
-            message="Olá Victor! Quero um site que vende de verdade. Vim da página de serviços."
+            message="Olá Victor! Quero um robô de atendimento para o meu negócio. Vim da página de serviços."
           />
         </div>
       </section>
@@ -461,7 +458,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           </AccordionItem>
           <AccordionItem value="structure" className="border-border/30">
             <AccordionTrigger className="text-xs text-primary font-bold py-2 hover:no-underline">
-              Estrutura da página
+              Lógica de operação
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2">
@@ -481,7 +478,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
         {/* CTA */}
         <div className="mt-5">
           <WhatsAppCTA
-            source={`servico-sites-venda-${plan.id}`}
+            source={`servico-robos-${plan.id}`}
             size="sm"
             message={`Olá Victor! Tenho interesse no plano ${plan.name}. Vim da página de serviços.`}
             className="w-full"

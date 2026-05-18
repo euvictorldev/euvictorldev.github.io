@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
-  Globe,
+  Smartphone,
   CheckCircle2,
   Zap,
   Target,
@@ -11,12 +11,12 @@ import {
   Sparkles,
   Star,
   ChevronRight,
-  Server,
   Palette,
-  BarChart3,
+  ShieldCheck,
+  Cpu,
+  Download,
+  WifiOff,
   Lock,
-  FileText,
-  HeadphonesIcon,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -47,151 +47,150 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "bio-link",
-    name: "Bio-Link Estratégico",
-    idealFor: "Profissionais e pequenos negócios que precisam centralizar sua presença digital.",
-    priceFrom: "R$ 300",
+    id: "app-start",
+    name: "O App Start",
+    idealFor: "Se você tem uma ideia nova e quer testar rápido no mercado sem gastar muito dinheiro.",
+    priceFrom: "R$ 3.500",
     priceLabel: "A partir de",
-    timeframe: "2 a 3 dias úteis",
+    timeframe: "2 a 4 semanas",
     highlighted: false,
     keyFeatures: [
-      "Design Mobile-First otimizado",
-      "Botão de WhatsApp flutuante e animado",
-      "Domínio próprio configurado",
-      "Certificado SSL incluso",
+      "Funcional em Android e iPhone",
+      "Ferramentas básicas (Até 5 telas)",
+      "Focado no problema principal",
+      "Design limpo e intuitivo",
     ],
     fullFeatures: [
-      "Links estratégicos organizados por funil de vendas",
-      "Bio persuasiva e foto de perfil/logo",
-      "Chamadas de ação destacadas para WhatsApp/Catálogo",
-      "Links secundários (redes sociais, localização, portfólio)",
-      "Rodapé minimalista com ícones",
+      "Base sólida para validação (MVP)",
+      "Navegação fluida entre telas",
+      "Integração básica de formulários",
+      "Pronto para coletar feedback real",
+      "Hospedagem inicial configurada",
     ],
     structure: [
-      "Cabeçalho com foto/logo + bio persuasiva",
-      "Botões de ação primários (WhatsApp/Catálogo)",
-      "Links secundários organizados",
-      "Rodapé minimalista com SSL",
+      "Definição da jornada do usuário",
+      "Desenvolvimento do núcleo (Core)",
+      "Testes de usabilidade básica",
+      "Entrega para teste de mercado",
     ],
   },
   {
-    id: "landing-page",
-    name: "Landing Page Express",
-    idealFor: "Prestadores de serviços que querem receber tráfego pago com alta conversão.",
-    priceFrom: "R$ 1.000",
+    id: "app-pro",
+    name: "O App Pro",
+    idealFor: "Se você já sabe o que quer e precisa de um aplicativo mais forte para o dia a dia da sua empresa.",
+    priceFrom: "R$ 8.900",
     priceLabel: "A partir de",
-    timeframe: "5 a 7 dias úteis",
+    timeframe: "4 a 7 semanas",
     highlighted: true,
-    badge: "Recomendado",
+    badge: "Mais Vendido",
     keyFeatures: [
-      "Estrutura de conversão completa",
-      "PageSpeed 90+ garantido",
-      "Pixels Meta + Google instalados",
-      "Formulário inteligente (e-mail ou WhatsApp)",
+      "Banco de dados robusto",
+      "Notificações Push",
+      "Painel de Controle completo",
+      "Mais telas e fluxos complexos",
     ],
     fullFeatures: [
-      "Headline matadora + benefícios + depoimentos + FAQ",
-      "SEO básico para indexação no Google",
-      "Otimização de velocidade para não desperdiçar cliques",
-      "Conformidade LGPD no rodapé",
+      "Sincronização de dados em tempo real",
+      "Sistema de autenticação (Login)",
+      "Painel web para gestão de conteúdo",
+      "Relatórios de uso e métricas",
+      "Otimização de consumo de bateria",
+      "Arquitetura escalável para crescimento",
     ],
     structure: [
-      "Hero (headline de impacto + subheadline + CTA)",
-      "Prova social (logos ou destaques)",
-      "Seção de solução (como seu serviço resolve o problema)",
-      "Depoimentos (prints/vídeos de clientes)",
-      "FAQ para quebra de objeções",
-      "Rodapé com links de conformidade (LGPD)",
+      "Modelagem de dados complexa",
+      "Desenvolvimento de API e Painel",
+      "Configuração de Push Notifications",
+      "Testes de carga e estresse",
     ],
   },
   {
-    id: "pagina-pro",
-    name: "Página de Vendas Pro",
-    idealFor: "Infoprodutores e cursos online que buscam automação total da venda ao checkout.",
-    priceFrom: "R$ 2.350",
+    id: "app-master",
+    name: "O App Master",
+    idealFor: "Para quem precisa de tecnologia avançada, pagamentos e design de luxo para muitos usuários.",
+    priceFrom: "R$ 18.000",
     priceLabel: "A partir de",
-    timeframe: "10 a 14 dias úteis",
+    timeframe: "8 a 12 semanas",
     highlighted: false,
     keyFeatures: [
-      "Design exclusivo e personalizado",
-      "Checkout integrado (Kiwify/Hotmart/Eduzz)",
-      "Página de obrigado + funil pós-venda",
-      "Copywriting refinado por IA",
+      "Design de luxo e exclusivo",
+      "Integração com Pagamentos/Mapas",
+      "Inteligência Artificial nativa",
+      "Suporte para escala massiva",
     ],
     fullFeatures: [
-      "VSL (Vídeo de Vendas) na hero",
-      "Detalhamento de módulos e bônus",
-      "Tabela de planos e preços",
-      "Selos de garantia e botões diretos de checkout",
-      "Segurança avançada e proteção contra Brute Force",
-      "Página de obrigado com instruções + suporte",
+      "Micro-interações premium",
+      "Gateway de pagamento (Stripe/MP)",
+      "Geolocalização e mapas avançados",
+      "Processamento via IA (GPT/Claude)",
+      "Segurança bancária de dados",
+      "Redundância global de servidores",
     ],
     structure: [
-      "Hero com VSL (Vídeo de Vendas)",
-      "Transformação do produto",
-      "Módulos e bônus detalhados",
-      "Tabela de planos/preços",
-      "Selos de garantia + botões de checkout",
-      "Página de obrigado + instruções de acesso",
+      "UI/UX Design de alta fidelidade",
+      "Integrações de terceiros (APIs)",
+      "Implementação de IA e Algoritmos",
+      "Otimização extrema de performance",
     ],
   },
 ];
 
 const addons = [
-  { name: "Segurança Cloudflare WAF", price: "+R$ 500", icon: Shield },
-  { name: "Tracking Avançado de Eventos", price: "+R$ 300", icon: BarChart3 },
-  { name: "Identidade Visual Básica", price: "+R$ 450", icon: Palette },
-  { name: "Integração com CRM", price: "A partir de +R$ 500", icon: Target },
+  { name: "Publicação nas Lojas", price: "+R$ 800", icon: Download },
+  { name: "Modo Offline", price: "+R$ 1.500", icon: WifiOff },
+  { name: "Sua Marca Bonita (Logo)", price: "+R$ 450", icon: Palette },
+  { name: "IA no seu Aplicativo", price: "A partir de R$ 2.000", icon: Cpu },
 ];
 
 const trustPoints = [
-  { icon: Zap, title: "Agilidade com IA", desc: "Semanas, não meses." },
-  { icon: Target, title: "Foco em Lucro", desc: "Ferramenta de faturamento." },
-  { icon: Shield, title: "Comprometimento", desc: "Performance e estabilidade." },
-  { icon: Eye, title: "Transparência", desc: "Você é dono de tudo." },
+  { icon: Target, title: "Design para Pessoas", desc: "Desenho pensando em quem vai usar de verdade." },
+  { icon: Zap, title: "Código Rápido", desc: "Aplicativo leve que não 'pesa' no celular." },
+  { icon: Eye, title: "Entrega por Etapas", desc: "Você testa e aprova enquanto eu construo." },
+  { icon: Shield, title: "Testes Reais", desc: "Testado em vários modelos de celular." },
 ];
 
 const techStack = [
-  "Next.js 15", "React", "Vite", "Astro",
-  "Tailwind CSS", "Framer Motion", "Figma",
-  "Cloudflare", "Vercel", "Supabase",
-  "OpenAI API", "Node.js", "TypeScript",
+  "React Native", "Flutter", "Expo", "OpenAI API",
+  "Claude", "LiteLLM", "Supabase", "PostgreSQL",
+  "Firebase", "MongoDB", "Figma", "Framer",
+  "Photoshop", "Docker", "VPS Linux", "Cloudflare",
 ];
 
 const requirementsFAQ = [
   {
     id: "req-1",
-    title: "Identidade e Conteúdo (Todos os Planos)",
+    title: "Fase 1: O Plano",
     items: [
-      "Logotipo em alta resolução ou vetor (se houver)",
-      "Paleta de cores da marca (se houver)",
-      "Textos iniciais e fotos/vídeos dos produtos ou serviços",
+      "Descrição simples do problema que o app resolve",
+      "O que a pessoa precisa conseguir fazer dentro dele",
+      "Lista de funcionalidades 'indispensáveis'",
     ],
   },
   {
     id: "req-2",
-    title: "Acessos Técnicos (Landing Page e Pro)",
+    title: "Fase 2: O Público",
     items: [
-      "Acesso ao painel do domínio (ex: Registro.br)",
-      "Acesso como Admin ao Gerenciador de Negócios (Meta/Facebook) e Google Ads",
-      "Exemplos de sites que você gosta (referências visuais)",
+      "Quem são os usuários? (Clientes, funcionários, etc)",
+      "Em quais situações eles usarão o app?",
+      "Preferência de sistema (Foco em iOS, Android ou ambos)",
     ],
   },
   {
     id: "req-3",
-    title: "Estrutura de Vendas (Apenas Plano Pro)",
+    title: "Fase 3: Contas Oficiais",
     items: [
-      "Links dos produtos nas plataformas de pagamento (Kiwify, Hotmart, etc)",
-      "Detalhes de bônus, garantias e ofertas exclusivas",
+      "Conta de Desenvolvedor Apple (US$ 99/ano)",
+      "Conta de Desenvolvedor Google (US$ 25 única)",
+      "Taxas pagas diretamente às lojas para manter o app no ar",
     ],
   },
 ];
 
 /* ─── Component ─── */
-export default function SitesQueVendem() {
+export default function SeuAppExclusivo() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* ── Back Button — sticky flush to top ── */}
+      {/* ── Back Button ── */}
       <div className="sticky top-0 z-50 px-6 py-3 backdrop-blur-md bg-background/70 border-b border-border/10">
         <Link
           to="/#servicos"
@@ -204,21 +203,19 @@ export default function SitesQueVendem() {
 
       {/* ── Hero ── */}
       <section className="pt-12 pb-16 px-6 relative">
-        {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[700px] h-[700px] rounded-full bg-primary/5 blur-[120px]" />
         </div>
 
         <div className="relative z-10 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary mx-auto">
-            <Globe className="h-10 w-10" strokeWidth={1.5} />
+            <Smartphone className="h-10 w-10" strokeWidth={1.5} />
           </div>
           <h1 className="mt-8 font-display text-fluid-5xl md:text-7xl leading-[1] tracking-[-0.02em]">
-            Sites que <em className="not-italic text-primary">Vendem</em>
+            Seu App <em className="not-italic text-primary">Exclusivo</em>
           </h1>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Páginas de alta performance, otimizadas com Inteligência Artificial e focadas em{" "}
-            <span className="text-foreground font-medium">transformar cliques em clientes.</span>
+          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed italic">
+            "Transforme sua ideia em um aplicativo real que funciona direto no celular dos seus clientes (Android e iPhone)."
           </p>
         </div>
       </section>
@@ -235,24 +232,24 @@ export default function SitesQueVendem() {
       {/* ── Monthly Plan ── */}
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
-          <Card className="border-border/50 bg-card/15 overflow-hidden">
+          <Card className="border-border/50 bg-card/15 overflow-hidden border-primary/20">
             <CardContent className="p-8 md:flex md:items-center md:justify-between gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <HeadphonesIcon className="h-5 w-5" strokeWidth={1.5} />
+                    <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Plano de Performance e Continuidade</h3>
-                    <p className="text-xs text-muted-foreground">A assinatura que mantém sua máquina de vendas rodando.</p>
+                    <h3 className="font-bold text-lg">🛡️ O seu Seguro Digital</h3>
+                    <p className="text-xs text-muted-foreground">Eu garanto que seu aplicativo continue funcionando mesmo quando o Google ou a Apple mudarem as regras.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                   {[
-                    { icon: Server, label: "Hospedagem gerenciada" },
-                    { icon: Eye, label: "Vigilância 24/7" },
-                    { icon: Lock, label: "Backups regulares" },
-                    { icon: FileText, label: "Relatório mensal" },
+                    { icon: Eye, label: "Vigilância 24h" },
+                    { icon: Sparkles, label: "Atualizações Técnicas" },
+                    { icon: Lock, label: "Cópia de Segurança" },
+                    { icon: Clock, label: "Ajustes Rápidos (2h/mês)" },
                   ].map(({ icon: Icon, label }) => (
                     <div key={label} className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Icon className="h-3.5 w-3.5 text-primary flex-shrink-0" />
@@ -261,7 +258,7 @@ export default function SitesQueVendem() {
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">
-                  + Suporte prioritário com até 2h mensais para pequenos ajustes.
+                  Monitoramento de servidor, ajustes para novas versões de OS e pequenas alterações mensais inclusas.
                 </p>
               </div>
               <div className="mt-6 md:mt-0 text-center md:text-right flex-shrink-0">
@@ -269,9 +266,9 @@ export default function SitesQueVendem() {
                   R$ 229,90<span className="text-base font-normal text-muted-foreground">/mês</span>
                 </div>
                 <WhatsAppCTA
-                  source="servico-sites-venda-mensal"
+                  source="servico-app-seguro-digital"
                   size="sm"
-                  message="Olá Victor! Quero saber mais sobre o plano mensal de continuidade."
+                  message="Olá Victor! Quero saber mais sobre o Seguro Digital para o meu aplicativo."
                   className="mt-4"
                 />
               </div>
@@ -284,7 +281,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-6">
-            Personalize seu <em className="not-italic text-primary">projeto</em>
+            Coisas <em className="not-italic text-primary">Extras</em> que Você Pode Adicionar
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {addons.map(({ name, price, icon: Icon }) => (
@@ -327,9 +324,9 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-fluid-3xl mb-2">
-            O que eu preciso de <em className="not-italic text-primary">você</em>
+            Requisitos do <em className="not-italic text-primary">Projeto</em>
           </h2>
-          <p className="text-muted-foreground text-sm mb-6">Para começarmos o projeto.</p>
+          <p className="text-muted-foreground text-sm mb-6">O que eu preciso de você para darmos vida ao seu app.</p>
 
           <Accordion type="multiple" className="w-full">
             {requirementsFAQ.map((req) => (
@@ -357,7 +354,7 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
-            Tecnologias de Elite
+            Tecnologias que Utilizamos
           </h3>
           <div className="flex flex-wrap justify-center gap-2">
             {techStack.map((tech) => (
@@ -376,16 +373,15 @@ export default function SitesQueVendem() {
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-fluid-4xl mb-4">
-            Pronto para ter um site que{" "}
-            <em className="not-italic text-primary">realmente vende?</em>
+            Pronto para ter seu <em className="not-italic text-primary">app exclusivo?</em>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Vamos conversar sobre o seu projeto. Sem compromisso, sem enrolação.
+            Transforme sua ideia em realidade e leve seu negócio para o bolso de todos os seus clientes.
           </p>
           <WhatsAppCTA
-            source="servico-sites-venda-final"
+            source="servico-app-final"
             size="lg"
-            message="Olá Victor! Quero um site que vende de verdade. Vim da página de serviços."
+            message="Olá Victor! Tenho uma ideia de aplicativo e gostaria de conversar sobre o desenvolvimento exclusivo."
           />
         </div>
       </section>
@@ -404,7 +400,6 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           : "border-border/50 bg-card/15 hover:border-primary/20"
       )}
     >
-      {/* Badge */}
       {plan.badge && (
         <div className="absolute top-4 right-4">
           <Badge className="bg-primary text-primary-foreground text-[10px] font-bold px-3 py-1 shadow-[0_0_16px_hsl(var(--primary)/0.4)]">
@@ -420,7 +415,6 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
       </CardHeader>
 
       <CardContent className="px-6 pb-6 flex-1 flex flex-col">
-        {/* Price */}
         <div className="my-4">
           <span className="text-xs text-muted-foreground">{plan.priceLabel}</span>
           <div className="text-3xl font-bold mt-0.5">{plan.priceFrom}</div>
@@ -432,7 +426,6 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
 
         <Separator className="opacity-20 mb-4" />
 
-        {/* Key Features */}
         <div className="space-y-2.5 flex-1">
           {plan.keyFeatures.map((f) => (
             <div key={f} className="flex items-start gap-2">
@@ -442,7 +435,6 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           ))}
         </div>
 
-        {/* Accordion for details */}
         <Accordion type="single" collapsible className="mt-4">
           <AccordionItem value="features" className="border-border/30">
             <AccordionTrigger className="text-xs text-primary font-bold py-2 hover:no-underline">
@@ -461,7 +453,7 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           </AccordionItem>
           <AccordionItem value="structure" className="border-border/30">
             <AccordionTrigger className="text-xs text-primary font-bold py-2 hover:no-underline">
-              Estrutura da página
+              Como construímos
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2">
@@ -478,12 +470,11 @@ function PlanCard({ plan }: { readonly plan: Plan }) {
           </AccordionItem>
         </Accordion>
 
-        {/* CTA */}
         <div className="mt-5">
           <WhatsAppCTA
-            source={`servico-sites-venda-${plan.id}`}
+            source={`servico-app-${plan.id}`}
             size="sm"
-            message={`Olá Victor! Tenho interesse no plano ${plan.name}. Vim da página de serviços.`}
+            message={`Olá Victor! Tenho interesse no plano ${plan.name} para o meu aplicativo exclusivo.`}
             className="w-full"
           />
         </div>

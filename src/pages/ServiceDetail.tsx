@@ -2,6 +2,10 @@ import { useParams, Link } from "react-router-dom";
 import { Globe, Bot, Smartphone, ShieldCheck, LifeBuoy, ArrowLeft, Clock, DollarSign, CheckCircle2, MessageCircle } from "lucide-react";
 import { CTAGroup } from "@/components/CTAButtons";
 import SitesQueVendem from "./SitesQueVendem";
+import RobosDeAtendimento from "./RobosDeAtendimento";
+import SeuAppExclusivo from "./SeuAppExclusivo";
+import SegurancaTotal from "./SegurancaTotal";
+import SempreComVoce from "./SempreComVoce";
 
 interface ServiceData {
   slug: string;
@@ -104,11 +108,11 @@ const servicesData: ServiceData[] = [
     title: "Segurança Total",
     subtitle: "Proteção completa para seus dados e os dados dos seus clientes.",
     features: [
-      "Auditoria de segurança completa",
-      "Monitoramento 24/7",
-      "Backup automatizado",
-      "Criptografia de dados",
-      "Conformidade com LGPD",
+      "Certificado SSL (Cadeado Verde)",
+      "Proteção Cloudflare & WAF",
+      "Backup Automático Off-site",
+      "Limpeza profunda de código",
+      "Alarme Inteligente de invasão",
     ],
     requirements: [
       "Descrição do sistema atual",
@@ -121,9 +125,9 @@ const servicesData: ServiceData[] = [
       "Relatórios detalhados",
       "Suporte emergencial",
     ],
-    techs: ["Python", "Docker", "PostgreSQL"],
-    timeframe: "1–2 semanas",
-    priceFrom: "A partir de R$ 1.200",
+    techs: ["Cloudflare", "WAF", "SSL"],
+    timeframe: "2 a 25 dias",
+    priceFrom: "A partir de R$ 250",
   },
   {
     slug: "sempre-com-voce",
@@ -157,10 +161,27 @@ const servicesData: ServiceData[] = [
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
 
-  // Dedicated page for "Sites que Vendem" service
+  // Dedicated pages for specific services
   if (slug === "sites-que-vendem") {
     return <SitesQueVendem />;
   }
+
+  if (slug === "robos-de-atendimento") {
+    return <RobosDeAtendimento />;
+  }
+
+  if (slug === "seu-app-exclusivo") {
+    return <SeuAppExclusivo />;
+  }
+
+  if (slug === "seguranca-total") {
+    return <SegurancaTotal />;
+  }
+
+  if (slug === "sempre-com-voce") {
+    return <SempreComVoce />;
+  }
+
 
   const service = servicesData.find((s) => s.slug === slug);
 
