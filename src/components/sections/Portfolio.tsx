@@ -112,7 +112,7 @@ const featuredProjects: FeaturedProject[] = [
     ),
     stack: ["TypeScript", "VS Code API", "Node.js", "Octokit"],
     image: `${base}/images/ghostcommit-icon.png`,
-    borderStyle: "discord",
+    borderStyle: "ghost",
     mediaType: "image",
     glowColor: "rgba(255, 255, 255, 0.4)",
     date: "mai/26",
@@ -381,11 +381,8 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
   if (project.mediaType === "image") {
     if (project.borderStyle === "cyber") {
       return (
-        <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px]">
-          {/* Cyber Glow */}
+        <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
           <div className="absolute inset-0 blur-[60px] opacity-35 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
-          
-          {/* Cyber Card - Encaixe Absoluto e Perfeito */}
           <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-primary/60 shadow-[0_0_35px_rgba(0,255,65,0.35)] group-hover:border-primary group-hover:shadow-[0_0_55px_rgba(0,255,65,0.6)] transition-all duration-500 bg-black flex items-center justify-center">
             <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
           </div>
@@ -393,19 +390,22 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
       );
     }
 
+    if (project.borderStyle === "ghost") {
+      return (
+        <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
+          <div className="absolute inset-0 blur-[60px] opacity-35 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
+          <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-white/40 shadow-[0_0_35px_rgba(255,255,255,0.25)] group-hover:border-white group-hover:shadow-[0_0_55px_rgba(255,255,255,0.5)] transition-all duration-500 bg-black flex items-center justify-center backdrop-blur-xl">
+            <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div className="relative py-2 px-1 flex justify-center md:justify-start">
-        {/* Image Glow */}
-        <div className={cn(
-          "absolute blur-[50px] opacity-25 -z-10",
-          project.borderStyle === "discord" ? "w-[260px] aspect-square" : "w-full aspect-video"
-        )} style={{ background: project.glowColor || 'transparent' }} />
-        
-        <div className={cn(
-          "relative overflow-hidden border border-white/10 bg-black/40",
-          project.borderStyle === "discord" ? "rounded-xl p-2 max-w-[300px]" : "rounded-2xl"
-        )}>
-          <img src={project.image} alt={project.name} className="w-full h-auto object-contain block" />
+      <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
+        <div className="absolute inset-0 blur-[60px] opacity-30 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
+        <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-[#5865F2]/50 shadow-[0_0_35px_rgba(88,101,242,0.3)] group-hover:border-[#5865F2] group-hover:shadow-[0_0_55px_rgba(88,101,242,0.5)] transition-all duration-500 bg-black flex items-center justify-center">
+          <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
         </div>
       </div>
     );
