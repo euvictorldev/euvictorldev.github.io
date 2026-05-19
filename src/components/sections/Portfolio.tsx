@@ -163,8 +163,9 @@ const featuredProjects: FeaturedProject[] = [
       </div>
     ),
     stack: ["TypeScript", "Next.js", "Supabase", "WebRTC"],
+    image: `${base}/images/bloom.png`,
     borderStyle: "browser",
-    mediaType: "placeholder",
+    mediaType: "image",
     glowColor: "rgba(59, 130, 246, 0.4)",
     date: "mai/26",
   },
@@ -380,6 +381,24 @@ const LazyVideo = memo(({ src, webmSrc, poster, style, zoom = 1, isPaused, glowC
 const ProjectMedia = memo(({ project, isPaused }: any) => {
   if (project.mediaType === "video") return <LazyVideo {...project} isPaused={isPaused} style={project.borderStyle} />;
   if (project.mediaType === "image") {
+    if (project.borderStyle === "browser") {
+      return (
+        <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[520px] mx-auto md:mx-0">
+          <div className="absolute inset-0 blur-[60px] opacity-35 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 bg-black flex flex-col">
+            <div className="bg-[#151515] px-4 py-2 flex gap-1.5 border-b border-white/5">
+              <div className="w-2 h-2 rounded-full bg-red-500/20" />
+              <div className="w-2 h-2 rounded-full bg-yellow-500/20" />
+              <div className="w-2 h-2 rounded-full bg-green-500/20" />
+            </div>
+            <div className="relative w-full flex-1 overflow-hidden">
+              <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     if (project.borderStyle === "cyber") {
       return (
         <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
