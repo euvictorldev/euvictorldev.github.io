@@ -378,28 +378,38 @@ const LazyVideo = memo(({ src, webmSrc, poster, style, zoom = 1, isPaused, glowC
 
 const ProjectMedia = memo(({ project, isPaused }: any) => {
   if (project.mediaType === "video") return <LazyVideo {...project} isPaused={isPaused} style={project.borderStyle} />;
-  if (project.mediaType === "image") return (
-    <div className="relative py-2 px-1 flex justify-center md:justify-start">
-      {/* Image Glow */}
-      <div className={cn(
-        "absolute blur-[50px] opacity-30 -z-10",
-        project.borderStyle === "discord" ? "w-[260px] aspect-square" :
-        project.borderStyle === "cyber" ? "w-[280px] aspect-square" : "w-full aspect-video"
-      )} style={{ background: project.glowColor || 'transparent' }} />
-      
-      <div className={cn(
-        "relative overflow-hidden transition-all duration-500",
-        project.borderStyle === "discord" && "border border-white/10 bg-black/40 rounded-xl p-2 max-w-[300px]",
-        project.borderStyle === "cyber" && "border-2 border-primary/50 bg-black rounded-[2rem] w-full max-w-[300px] aspect-square shadow-[0_0_35px_rgba(0,255,65,0.3)] group-hover:border-primary group-hover:shadow-[0_0_50px_rgba(0,255,65,0.5)]",
-        project.borderStyle !== "discord" && project.borderStyle !== "cyber" && "border border-white/10 bg-black/40 rounded-2xl"
-      )}>
-        <img src={project.image} alt={project.name} className={cn(
-          "w-full h-full object-cover transition-transform duration-700",
-          project.borderStyle === "cyber" ? "group-hover:scale-105" : ""
-        )} />
+  if (project.mediaType === "image") {
+    if (project.borderStyle === "cyber") {
+      return (
+        <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px]">
+          {/* Cyber Glow */}
+          <div className="absolute inset-0 blur-[60px] opacity-35 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
+          
+          {/* Cyber Card - Encaixe Absoluto e Perfeito */}
+          <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-primary/60 shadow-[0_0_35px_rgba(0,255,65,0.35)] group-hover:border-primary group-hover:shadow-[0_0_55px_rgba(0,255,65,0.6)] transition-all duration-500 bg-black flex items-center justify-center">
+            <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="relative py-2 px-1 flex justify-center md:justify-start">
+        {/* Image Glow */}
+        <div className={cn(
+          "absolute blur-[50px] opacity-25 -z-10",
+          project.borderStyle === "discord" ? "w-[260px] aspect-square" : "w-full aspect-video"
+        )} style={{ background: project.glowColor || 'transparent' }} />
+        
+        <div className={cn(
+          "relative overflow-hidden border border-white/10 bg-black/40",
+          project.borderStyle === "discord" ? "rounded-xl p-2 max-w-[300px]" : "rounded-2xl"
+        )}>
+          <img src={project.image} alt={project.name} className="w-full h-auto object-contain block" />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
   return <div className="aspect-video bg-white/5 rounded-2xl border border-white/5 flex items-center justify-center text-muted-foreground uppercase text-xs tracking-widest">Em breve</div>;
 });
 
