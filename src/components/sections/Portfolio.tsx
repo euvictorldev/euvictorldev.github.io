@@ -190,6 +190,7 @@ const featuredProjects: FeaturedProject[] = [
     image: `${base}/images/discord-bot-preview.png`,
     borderStyle: "discord",
     mediaType: "image",
+    aspectRatio: "portrait",
     glowColor: "rgba(88, 101, 242, 0.4)",
     date: "jul/24",
   },
@@ -401,10 +402,15 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
       );
     }
 
+    const isPortrait = project.aspectRatio === "portrait";
+
     return (
       <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
         <div className="absolute inset-0 blur-[60px] opacity-30 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
-        <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-[#5865F2]/50 shadow-[0_0_35px_rgba(88,101,242,0.3)] group-hover:border-[#5865F2] group-hover:shadow-[0_0_55px_rgba(88,101,242,0.5)] transition-all duration-500 bg-black flex items-center justify-center">
+        <div className={cn(
+          "relative w-full rounded-[2rem] overflow-hidden border-2 border-[#5865F2]/50 shadow-[0_0_35px_rgba(88,101,242,0.3)] group-hover:border-[#5865F2] group-hover:shadow-[0_0_55px_rgba(88,101,242,0.5)] transition-all duration-500 bg-black flex items-center justify-center",
+          isPortrait ? "aspect-[3/4]" : "aspect-square"
+        )}>
           <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
         </div>
       </div>
