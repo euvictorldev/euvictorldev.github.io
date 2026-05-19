@@ -60,7 +60,7 @@ const featuredProjects: FeaturedProject[] = [
     image: `${base}/images/icon.png`,
     borderStyle: "cyber",
     mediaType: "image",
-    glowColor: "rgba(0, 255, 65, 0.4)",
+    glowColor: "rgba(239, 68, 68, 0.4)",
     date: "mai/26",
   },
   {
@@ -383,7 +383,7 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
       return (
         <div className="relative py-2 px-1 flex justify-center md:justify-start w-full max-w-[320px] mx-auto md:mx-0">
           <div className="absolute inset-0 blur-[60px] opacity-35 -z-10 rounded-full" style={{ background: project.glowColor || 'transparent' }} />
-          <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-primary/60 shadow-[0_0_35px_rgba(0,255,65,0.35)] group-hover:border-primary group-hover:shadow-[0_0_55px_rgba(0,255,65,0.6)] transition-all duration-500 bg-black flex items-center justify-center">
+          <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-2 border-red-500/60 shadow-[0_0_35px_rgba(239,68,68,0.35)] group-hover:border-red-500 group-hover:shadow-[0_0_55px_rgba(239,68,68,0.6)] transition-all duration-500 bg-black flex items-center justify-center">
             <img src={project.image} alt={project.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" />
           </div>
         </div>
