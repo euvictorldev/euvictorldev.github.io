@@ -41,7 +41,7 @@ const featuredProjects: FeaturedProject[] = [
     name: "Hades-Agent",
     role: "AI Product Engineer",
     status: "mai de 2026 - o momento",
-    description: "Assistente nativo de IA para desktop com orquestração de agentes autônomos e processamento de áudio em tempo real.",
+    description: "Assistente nativo de IA para desktop com orquestração de agentes autônos e processamento de áudio em tempo real.",
     longDesc: (
       <div className="space-y-4">
         <p>Arquitetura e desenvolvimento do Hades-Agent, um ecossistema de IA desktop projetado para operar com alta autonomia (Agentic ReAct Loop) e baixa latência.</p>
@@ -61,6 +61,57 @@ const featuredProjects: FeaturedProject[] = [
     borderStyle: "cyber",
     mediaType: "image",
     glowColor: "rgba(239, 68, 68, 0.4)",
+    date: "mai/26",
+  },
+  {
+    name: "GhostCommit",
+    role: "Creator & Software Engineer",
+    status: "mai de 2026 - o momento",
+    description: "Extensão open-source para VS Code focada em automação de commits programáticos via GitHub API.",
+    longDesc: (
+      <div className="space-y-4">
+        <p>Extensão open-source para VS Code, VSCodium e Antigravity, operando nos bastidores para mapear e ofuscar a atividade local de desenvolvimento e interações via IA.</p>
+        <div className="space-y-2 mt-4">
+          <p className="font-bold text-primary text-sm tracking-widest uppercase">⚡ Marcos de Engenharia & Soluções:</p>
+          <ul className="list-disc pl-5 space-y-2 text-[15px] md:text-base">
+            <li><strong className="text-white">VS Code API & Listeners:</strong> Observadores em tempo real para interceptar alterações feitas por humanos ou agentes autônomos.</li>
+            <li><strong className="text-white">Commit Programático:</strong> Integração assíncrona (@octokit/rest) com pushes via payloads Base64 e autenticação sem persistência de tokens locais.</li>
+            <li><strong className="text-white">Motor SVG Nativo & Cache Busting:</strong> Renderização em TypeScript puro de gráficos injetados no README quebrando políticas estáticas do GitHub.</li>
+            <li><strong className="text-white">I/O Não-Bloqueante:</strong> Armazenamento em memória com debouncing e ofuscação de nomes de clientes ou arquivos sigilosos.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    stack: ["TypeScript", "VS Code API", "Node.js", "Octokit"],
+    image: `${base}/images/ghostcommit-icon.png`,
+    borderStyle: "ghost",
+    mediaType: "image",
+    glowColor: "rgba(255, 255, 255, 0.4)",
+    date: "mai/26",
+  },
+  {
+    name: "Bloom",
+    role: "Software Engineer",
+    status: "mai de 2026",
+    description: "Plataforma de telessaúde serverless integrando WebRTC nativo, transferência de arquivos e acesso zero-auth.",
+    longDesc: (
+      <div className="space-y-4">
+        <p>Sistema focado em pediatria online projetado para ter custo zero em repouso e zero fricção de acesso para o paciente.</p>
+        <div className="space-y-2 mt-4">
+          <p className="font-bold text-primary text-sm tracking-widest uppercase">⚡ Marcos de Engenharia & Soluções:</p>
+          <ul className="list-disc pl-5 space-y-2 text-[15px] md:text-base">
+            <li><strong className="text-white">WebRTC Puro & Sinalização Realtime:</strong> Sinalização peer-to-peer construída sobre Broadcast do Supabase e STUN Servers.</li>
+            <li><strong className="text-white">Fluxo Zero-Auth:</strong> UUIDs únicos via rotas dinâmicas do Next.js alocando o paciente em sala de espera sem criar conta.</li>
+            <li><strong className="text-white">Transferência Segura e Pushs:</strong> Bloqueio sumário de extensões via borda e disparo de notificações Web Push integradas ao banco.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    stack: ["TypeScript", "Next.js", "Supabase", "WebRTC"],
+    image: `${base}/images/bloom.png`,
+    borderStyle: "browser",
+    mediaType: "image",
+    glowColor: "rgba(59, 130, 246, 0.4)",
     date: "mai/26",
   },
   {
@@ -92,32 +143,6 @@ const featuredProjects: FeaturedProject[] = [
     date: "abr/26",
   },
   {
-    name: "GhostCommit",
-    role: "Creator & Software Engineer",
-    status: "mai de 2026 - o momento",
-    description: "Extensão open-source para VS Code focada em automação de commits programáticos via GitHub API.",
-    longDesc: (
-      <div className="space-y-4">
-        <p>Extensão open-source para VS Code, VSCodium e Antigravity, operando nos bastidores para mapear e ofuscar a atividade local de desenvolvimento e interações via IA.</p>
-        <div className="space-y-2 mt-4">
-          <p className="font-bold text-primary text-sm tracking-widest uppercase">⚡ Marcos de Engenharia & Soluções:</p>
-          <ul className="list-disc pl-5 space-y-2 text-[15px] md:text-base">
-            <li><strong className="text-white">VS Code API & Listeners:</strong> Observadores em tempo real para interceptar alterações feitas por humanos ou agentes autônomos.</li>
-            <li><strong className="text-white">Commit Programático:</strong> Integração assíncrona (@octokit/rest) com pushes via payloads Base64 e autenticação sem persistência de tokens locais.</li>
-            <li><strong className="text-white">Motor SVG Nativo & Cache Busting:</strong> Renderização em TypeScript puro de gráficos injetados no README quebrando políticas estáticas do GitHub.</li>
-            <li><strong className="text-white">I/O Não-Bloqueante:</strong> Armazenamento em memória com debouncing e ofuscação de nomes de clientes ou arquivos sigilosos.</li>
-          </ul>
-        </div>
-      </div>
-    ),
-    stack: ["TypeScript", "VS Code API", "Node.js", "Octokit"],
-    image: `${base}/images/ghostcommit-icon.png`,
-    borderStyle: "ghost",
-    mediaType: "image",
-    glowColor: "rgba(255, 255, 255, 0.4)",
-    date: "mai/26",
-  },
-  {
     name: "HadesPay",
     role: "Full-Stack Product Engineer",
     status: "dez de 2025 - fev de 2026",
@@ -143,31 +168,6 @@ const featuredProjects: FeaturedProject[] = [
     mediaType: "video",
     glowColor: "rgba(239, 68, 68, 0.4)",
     date: "dez/25",
-  },
-  {
-    name: "Bloom",
-    role: "Software Engineer",
-    status: "mai de 2026",
-    description: "Plataforma de telessaúde serverless integrando WebRTC nativo, transferência de arquivos e acesso zero-auth.",
-    longDesc: (
-      <div className="space-y-4">
-        <p>Sistema focado em pediatria online projetado para ter custo zero em repouso e zero fricção de acesso para o paciente.</p>
-        <div className="space-y-2 mt-4">
-          <p className="font-bold text-primary text-sm tracking-widest uppercase">⚡ Marcos de Engenharia & Soluções:</p>
-          <ul className="list-disc pl-5 space-y-2 text-[15px] md:text-base">
-            <li><strong className="text-white">WebRTC Puro & Sinalização Realtime:</strong> Sinalização peer-to-peer construída sobre Broadcast do Supabase e STUN Servers.</li>
-            <li><strong className="text-white">Fluxo Zero-Auth:</strong> UUIDs únicos via rotas dinâmicas do Next.js alocando o paciente em sala de espera sem criar conta.</li>
-            <li><strong className="text-white">Transferência Segura e Pushs:</strong> Bloqueio sumário de extensões via borda e disparo de notificações Web Push integradas ao banco.</li>
-          </ul>
-        </div>
-      </div>
-    ),
-    stack: ["TypeScript", "Next.js", "Supabase", "WebRTC"],
-    image: `${base}/images/bloom.png`,
-    borderStyle: "browser",
-    mediaType: "image",
-    glowColor: "rgba(59, 130, 246, 0.4)",
-    date: "mai/26",
   },
   {
     name: "Integração Real-Time Discord",
