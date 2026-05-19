@@ -57,8 +57,9 @@ const featuredProjects: FeaturedProject[] = [
       </div>
     ),
     stack: ["Electron", "Node.js", "Gemini API", "TypeScript"],
-    borderStyle: "browser",
-    mediaType: "placeholder",
+    image: `${base}/images/icon.png`,
+    borderStyle: "cyber",
+    mediaType: "image",
     glowColor: "rgba(0, 255, 65, 0.4)",
     date: "mai/26",
   },
@@ -381,15 +382,21 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
     <div className="relative py-2 px-1 flex justify-center md:justify-start">
       {/* Image Glow */}
       <div className={cn(
-        "absolute blur-[50px] opacity-25 -z-10",
-        project.borderStyle === "discord" ? "w-[260px] aspect-square" : "w-full aspect-video"
+        "absolute blur-[50px] opacity-30 -z-10",
+        project.borderStyle === "discord" ? "w-[260px] aspect-square" :
+        project.borderStyle === "cyber" ? "w-[280px] aspect-square" : "w-full aspect-video"
       )} style={{ background: project.glowColor || 'transparent' }} />
       
       <div className={cn(
-        "relative overflow-hidden border border-white/10 bg-black/40",
-        project.borderStyle === "discord" ? "rounded-xl p-2 max-w-[300px]" : "rounded-2xl"
+        "relative overflow-hidden transition-all duration-500",
+        project.borderStyle === "discord" && "border border-white/10 bg-black/40 rounded-xl p-2 max-w-[300px]",
+        project.borderStyle === "cyber" && "border-2 border-primary/40 bg-gradient-to-b from-primary/10 via-black/60 to-black/90 backdrop-blur-xl rounded-[2.5rem] p-6 max-w-[320px] shadow-[0_0_35px_rgba(0,255,65,0.25)] group-hover:border-primary group-hover:shadow-[0_0_50px_rgba(0,255,65,0.4)]",
+        project.borderStyle !== "discord" && project.borderStyle !== "cyber" && "border border-white/10 bg-black/40 rounded-2xl"
       )}>
-        <img src={project.image} alt={project.name} className="w-full h-auto object-contain" />
+        <img src={project.image} alt={project.name} className={cn(
+          "w-full h-auto object-contain transition-transform duration-700",
+          project.borderStyle === "cyber" ? "group-hover:scale-105 drop-shadow-[0_10px_20px_rgba(0,255,65,0.3)]" : ""
+        )} />
       </div>
     </div>
   );
