@@ -8,7 +8,7 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} Victor. Construído com foco em conversão.</p>
         <div className="flex gap-5">
           <a
-            href="https://wa.me/5591984248767"
+            href="https://wa.me/5591984948767"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"

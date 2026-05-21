@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const WHATSAPP_NUMBER = "5591984248767";
+const WHATSAPP_NUMBER = "5591984948767";
 const DISCORD_INVITE = "https://discord.gg/AF3Hgvjxd5";
 
 interface CTAProps {
