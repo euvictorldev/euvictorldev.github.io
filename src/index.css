@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system — @victorl-dev portfolio
+/* Design system — @euvictorldev portfolio
    Paleta: Preto profundo + Verde Esmeralda (#00FF41)
    Todas as cores em HSL.
 */
@@ -10,7 +10,8 @@
 @layer base {
   :root {
     /* Base — deep black for maximum contrast */
-    --background: 0 0% 3%;            /* #080808 */
+    --background: 0 0% 3%;
+    /* #080808 */
     --foreground: 0 0% 98%;
 
     --card: 0 0% 11%;
@@ -20,7 +21,8 @@
     --popover-foreground: 0 0% 98%;
 
     /* Primary = Verde Esmeralda */
-    --primary: 135 100% 50%;          /* #00FF41 */
+    --primary: 135 100% 50%;
+    /* #00FF41 */
     --primary-foreground: 0 0% 5%;
     --primary-glow: 135 100% 60%;
 
@@ -43,8 +45,10 @@
     --radius: 0.75rem;
 
     /* New alternating backgrounds - Increased contrast for Shape Dividers */
-    --bg-emerald-deep: 142 15% 10%;   /* Slightly lighter emerald-gray */
-    --bg-charcoal-deep: 0 0% 7%;      /* Neutral deep gray, removed blue tint */
+    --bg-emerald-deep: 142 15% 10%;
+    /* Slightly lighter emerald-gray */
+    --bg-charcoal-deep: 0 0% 7%;
+    /* Neutral deep gray, removed blue tint */
 
     /* Branded gradients - Optimized for GPU (Shadows moved to physical layers) */
     --gradient-emerald: linear-gradient(135deg, hsl(135 100% 50%), hsl(150 100% 45%));
@@ -98,15 +102,19 @@
   * {
     @apply border-border;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
-    text-rendering: auto; /* Changed from optimizeLegibility for performance */
+    text-rendering: auto;
+    /* Changed from optimizeLegibility for performance */
   }
+
   .font-display {
     font-family: var(--font-display);
     font-weight: 400;
@@ -115,6 +123,7 @@
 }
 
 @layer components {
+
   /* ===== Liquid glass (adapted from hero prompt) ===== */
   body.modal-open {
     @apply overflow-hidden;
@@ -128,9 +137,9 @@
     @apply bg-white/5 border border-white/10 transform-gpu;
     position: relative;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), 
-                border-color 0.3s ease, 
-                background-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1),
+      border-color 0.3s ease,
+      background-color 0.3s ease;
     /* Removed backdrop-blur-sm and shadow-xl for scroll performance */
   }
 
@@ -141,12 +150,10 @@
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(255, 255, 255, 0.05),
-      transparent
-    );
+    background: linear-gradient(to right,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent);
     transform: skewX(-25deg);
     transition: 0.75s;
   }
@@ -173,6 +180,7 @@
     background: hsl(var(--primary));
     box-shadow: 0 0 12px hsl(var(--primary) / 0.8);
   }
+
   .pulse-dot::before {
     content: '';
     position: absolute;
@@ -188,26 +196,62 @@
     padding-bottom: var(--section-gap);
     @apply px-6;
   }
+
   .container-narrow {
     @apply max-w-6xl mx-auto px-6;
   }
 
   /* Utility classes for fluid text */
-  .text-fluid-xs { font-size: var(--text-xs); }
-  .text-fluid-sm { font-size: var(--text-sm); }
-  .text-fluid-base { font-size: var(--text-base); }
-  .text-fluid-lg { font-size: var(--text-lg); }
-  .text-fluid-xl { font-size: var(--text-xl); }
-  .text-fluid-2xl { font-size: var(--text-2xl); }
-  .text-fluid-3xl { font-size: var(--text-3xl); }
-  .text-fluid-4xl { font-size: var(--text-4xl); }
-  .text-fluid-5xl { font-size: var(--text-5xl); }
-  .text-fluid-6xl { font-size: var(--text-6xl); }
-  .text-fluid-7xl { font-size: var(--text-7xl); }
+  .text-fluid-xs {
+    font-size: var(--text-xs);
+  }
+
+  .text-fluid-sm {
+    font-size: var(--text-sm);
+  }
+
+  .text-fluid-base {
+    font-size: var(--text-base);
+  }
+
+  .text-fluid-lg {
+    font-size: var(--text-lg);
+  }
+
+  .text-fluid-xl {
+    font-size: var(--text-xl);
+  }
+
+  .text-fluid-2xl {
+    font-size: var(--text-2xl);
+  }
+
+  .text-fluid-3xl {
+    font-size: var(--text-3xl);
+  }
+
+  .text-fluid-4xl {
+    font-size: var(--text-4xl);
+  }
+
+  .text-fluid-5xl {
+    font-size: var(--text-5xl);
+  }
+
+  .text-fluid-6xl {
+    font-size: var(--text-6xl);
+  }
+
+  .text-fluid-7xl {
+    font-size: var(--text-7xl);
+  }
 }
 
 @layer utilities {
-  .text-balance { text-wrap: balance; }
+  .text-balance {
+    text-wrap: balance;
+  }
+
   .bg-grid {
     background-image:
       linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
@@ -229,17 +273,49 @@
   }
 
   @keyframes noise-animation {
-    0% { transform: translate(0,0) }
-    10% { transform: translate(-5%,-5%) }
-    20% { transform: translate(-10%,5%) }
-    30% { transform: translate(5%,-10%) }
-    40% { transform: translate(-5%,15%) }
-    50% { transform: translate(-10%,5%) }
-    60% { transform: translate(15%,0) }
-    70% { transform: translate(0,10%) }
-    80% { transform: translate(-15%,0) }
-    90% { transform: translate(10%,5%) }
-    100% { transform: translate(5%,0) }
+    0% {
+      transform: translate(0, 0)
+    }
+
+    10% {
+      transform: translate(-5%, -5%)
+    }
+
+    20% {
+      transform: translate(-10%, 5%)
+    }
+
+    30% {
+      transform: translate(5%, -10%)
+    }
+
+    40% {
+      transform: translate(-5%, 15%)
+    }
+
+    50% {
+      transform: translate(-10%, 5%)
+    }
+
+    60% {
+      transform: translate(15%, 0)
+    }
+
+    70% {
+      transform: translate(0, 10%)
+    }
+
+    80% {
+      transform: translate(-15%, 0)
+    }
+
+    90% {
+      transform: translate(10%, 5%)
+    }
+
+    100% {
+      transform: translate(5%, 0)
+    }
   }
 
   /* Performance Utilities */
@@ -269,22 +345,57 @@
 
 /* ===== Animations ===== */
 @keyframes fade-rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes ping {
-  75%, 100% { transform: scale(2.2); opacity: 0; }
-}
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-fade-rise { animation: fade-rise 0.8s ease-out both; }
-.animate-fade-rise-delay { animation: fade-rise 0.8s ease-out 0.15s both; }
-.animate-fade-rise-delay-2 { animation: fade-rise 0.8s ease-out 0.3s both; }
-.animate-fade-rise-delay-3 { animation: fade-rise 0.8s ease-out 0.45s both; }
-.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+@keyframes ping {
+
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 0.8s ease-out both;
+}
+
+.animate-fade-rise-delay {
+  animation: fade-rise 0.8s ease-out 0.15s both;
+}
+
+.animate-fade-rise-delay-2 {
+  animation: fade-rise 0.8s ease-out 0.3s both;
+}
+
+.animate-fade-rise-delay-3 {
+  animation: fade-rise 0.8s ease-out 0.45s both;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
 
 .cpu-architecture {
   offset-anchor: 10px 0px;
@@ -293,30 +404,109 @@
   animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
 }
 
-.cpu-line-1 { offset-path: path("M 15 15 h 25 v 15 q 0 5 5 5 h 40"); animation-duration: 4.4s; animation-delay: 0.5s; }
-.cpu-line-2 { offset-path: path("M 10 48 h 75"); animation-duration: 3.2s; animation-delay: 1.2s; }
-.cpu-line-3 { offset-path: path("M 25 82 h 15 v -10 q 0 -5 5 -5 h 15 v -10 q 0 -5 5 -5 h 20"); animation-duration: 5.2s; animation-delay: 0.2s; }
-.cpu-line-4 { offset-path: path("M 65 12 v 15 q 0 5 5 5 h 15 v 8"); animation-duration: 3.8s; animation-delay: 2.1s; }
-.cpu-line-5 { offset-path: path("M 98 5 v 35"); animation-duration: 3s; animation-delay: 0.8s; }
-.cpu-line-6 { offset-path: path("M 160 12 v 8 q 0 4 -4 4 h -20 v 6 q 0 4 -4 4 h -23.5 v 6"); animation-duration: 4.8s; animation-delay: 1.5s; }
-.cpu-line-7 { offset-path: path("M 188 22 h -20 v 15 q 0 5 -5 5 h -48"); animation-duration: 4.2s; animation-delay: 0.3s; }
-.cpu-line-8 { offset-path: path("M 190 52 h -75"); animation-duration: 3.4s; animation-delay: 2.5s; }
-.cpu-line-9 { offset-path: path("M 180 88 h -15 v -15 q 0 -5 -5 -5 h -15 v -10 q 0 -5 -5 -5 h -25"); animation-duration: 5s; animation-delay: 0.9s; }
-.cpu-line-10 { offset-path: path("M 140 92 v -10 q 0 -5 -5 -5 h -26.5 v -17"); animation-duration: 4s; animation-delay: 1.8s; }
-.cpu-line-11 { offset-path: path("M 102 85 v -25"); animation-duration: 3.3s; animation-delay: 0.4s; }
-.cpu-line-12 { offset-path: path("M 42 92 v -10 q 0 -5 5 -5 h 15 v -12 q 0 -5 5 -5 h 20 v -10"); animation-duration: 4.6s; animation-delay: 2.2s; }
+.cpu-line-1 {
+  offset-path: path("M 15 15 h 25 v 15 q 0 5 5 5 h 40");
+  animation-duration: 4.4s;
+  animation-delay: 0.5s;
+}
+
+.cpu-line-2 {
+  offset-path: path("M 10 48 h 75");
+  animation-duration: 3.2s;
+  animation-delay: 1.2s;
+}
+
+.cpu-line-3 {
+  offset-path: path("M 25 82 h 15 v -10 q 0 -5 5 -5 h 15 v -10 q 0 -5 5 -5 h 20");
+  animation-duration: 5.2s;
+  animation-delay: 0.2s;
+}
+
+.cpu-line-4 {
+  offset-path: path("M 65 12 v 15 q 0 5 5 5 h 15 v 8");
+  animation-duration: 3.8s;
+  animation-delay: 2.1s;
+}
+
+.cpu-line-5 {
+  offset-path: path("M 98 5 v 35");
+  animation-duration: 3s;
+  animation-delay: 0.8s;
+}
+
+.cpu-line-6 {
+  offset-path: path("M 160 12 v 8 q 0 4 -4 4 h -20 v 6 q 0 4 -4 4 h -23.5 v 6");
+  animation-duration: 4.8s;
+  animation-delay: 1.5s;
+}
+
+.cpu-line-7 {
+  offset-path: path("M 188 22 h -20 v 15 q 0 5 -5 5 h -48");
+  animation-duration: 4.2s;
+  animation-delay: 0.3s;
+}
+
+.cpu-line-8 {
+  offset-path: path("M 190 52 h -75");
+  animation-duration: 3.4s;
+  animation-delay: 2.5s;
+}
+
+.cpu-line-9 {
+  offset-path: path("M 180 88 h -15 v -15 q 0 -5 -5 -5 h -15 v -10 q 0 -5 -5 -5 h -25");
+  animation-duration: 5s;
+  animation-delay: 0.9s;
+}
+
+.cpu-line-10 {
+  offset-path: path("M 140 92 v -10 q 0 -5 -5 -5 h -26.5 v -17");
+  animation-duration: 4s;
+  animation-delay: 1.8s;
+}
+
+.cpu-line-11 {
+  offset-path: path("M 102 85 v -25");
+  animation-duration: 3.3s;
+  animation-delay: 0.4s;
+}
+
+.cpu-line-12 {
+  offset-path: path("M 42 92 v -10 q 0 -5 5 -5 h 15 v -12 q 0 -5 5 -5 h 20 v -10");
+  animation-duration: 4.6s;
+  animation-delay: 2.2s;
+}
 
 @keyframes animation-path {
-  0% { offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
 }
 
 /* --- Radial Orbital Timeline Styles --- */
 @keyframes pulse-orbital {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .animate-pulse-orbital {
@@ -328,9 +518,17 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.duration-300-orbital { transition-duration: 300ms; }
-.duration-700-orbital { transition-duration: 700ms; }
-.duration-1000-orbital { transition-duration: 1000ms; }
+.duration-300-orbital {
+  transition-duration: 300ms;
+}
+
+.duration-700-orbital {
+  transition-duration: 700ms;
+}
+
+.duration-1000-orbital {
+  transition-duration: 1000ms;
+}
 
 .backdrop-blur-lg-orbital {
   backdrop-filter: blur(16px);
@@ -344,21 +542,29 @@
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-.scale-125-orbital { transform: scale(1.25); }
-.scale-150-orbital { transform: scale(1.5); }
+.scale-125-orbital {
+  transform: scale(1.25);
+}
+
+.scale-150-orbital {
+  transform: scale(1.5);
+}
 
 /* ── Custom Scrollbar — matches dark/emerald theme ── */
 /* Webkit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: hsl(135 40% 25%);
   border-radius: 999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(135 80% 40%);
 }

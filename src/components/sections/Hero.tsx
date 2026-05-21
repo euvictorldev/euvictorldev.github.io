@@ -21,9 +21,9 @@ export default function Hero() {
       if (videoRef.current) {
         const isModalOpen = document.body.classList.contains("modal-open");
         const isVisible = videoRef.current.getBoundingClientRect().bottom > 0;
-        
+
         if (isVisible && !isModalOpen) {
-          videoRef.current.play().catch(() => {});
+          videoRef.current.play().catch(() => { });
         } else {
           videoRef.current.pause();
         }
@@ -32,9 +32,9 @@ export default function Hero() {
 
     const observer = new MutationObserver(checkVisibilityAndModal);
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-    
+
     window.addEventListener("scroll", checkVisibilityAndModal, { passive: true });
-    
+
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", checkVisibilityAndModal);
@@ -44,9 +44,9 @@ export default function Hero() {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   return (
-    <header 
+    <header
       className="relative min-h-[100dvh] w-full overflow-hidden bg-background"
-      style={{ 
+      style={{
         backgroundImage: `url('${base}/images/hero-background-static.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
@@ -77,7 +77,7 @@ export default function Hero() {
       {/* Navigation */}
       <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 py-5">
         <a href="#" className="group font-display text-fluid-2xl tracking-tight text-foreground transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
-          @victorl<span className="text-primary group-hover:animate-pulse">-dev</span>
+          @euvictorl<span className="text-primary group-hover:animate-pulse">dev</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -103,8 +103,8 @@ export default function Hero() {
 
       {/* Hero content */}
       <section className="relative z-10 flex flex-col items-center justify-center px-6 pt-12 pb-32 md:pt-20 md:pb-40 text-center">
-        <Badge 
-          variant="outline" 
+        <Badge
+          variant="outline"
           className="liquid-glass mb-8 gap-2.5 px-4 py-1.5 text-xs sm:text-sm font-medium border-white/20 bg-white/5 text-white/90 animate-fade-rise hover:bg-white/10 transition-colors cursor-default"
         >
           <span className="pulse-dot" />
@@ -120,7 +120,7 @@ export default function Hero() {
         </h1>
 
         <p className="animate-fade-rise-delay mt-8 max-w-2xl text-fluid-base leading-relaxed text-muted-foreground text-balance">
-          Crio seu site, seus robôs de atendimento e seus aplicativos para facilitar sua vida. 
+          Crio seu site, seus robôs de atendimento e seus aplicativos para facilitar sua vida.
           Você ganha tempo e eu cuido de toda a tecnologia de um jeito simples.
         </p>
 

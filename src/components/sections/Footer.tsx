@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-border py-10 px-6">
       <div className="container-narrow flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <div className="font-display text-xl text-foreground">
-          @victorl<span className="text-primary">-dev</span>
+          @euvictorl<span className="text-primary">dev</span>
         </div>
         <p>© {new Date().getFullYear()} Victor. Construído com foco em conversão.</p>
         <div className="flex gap-5">

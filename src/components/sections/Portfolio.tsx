@@ -144,7 +144,7 @@ const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "HadesPay",
-    role: "Full-Stack Product Engineer",
+    role: "Full-Stack Software Engineer",
     status: "dez de 2025 - fev de 2026",
     description: "Gateway multitenant de automação de cobranças e orquestração de IA via WhatsApp, com RAG e RLS.",
     longDesc: (
@@ -341,7 +341,7 @@ const LazyVideo = memo(({ src, webmSrc, poster, style, zoom = 1, isPaused, glowC
   useEffect(() => {
     if (!videoRef.current) return;
     if (isPaused || !isInView) videoRef.current.pause();
-    else videoRef.current.play().catch(() => {});
+    else videoRef.current.play().catch(() => { });
   }, [isPaused, isInView]);
 
   return (
@@ -439,7 +439,7 @@ const ProjectMedia = memo(({ project, isPaused }: any) => {
 });
 
 const TimelineText = ({ project, side, onSelect }: any) => (
-    <ScrollReveal direction={side === "left" ? "right" : "left"} className={cn("space-y-4 w-full max-w-md", side === "left" ? "md:text-right md:ml-auto" : "md:text-left")}>
+  <ScrollReveal direction={side === "left" ? "right" : "left"} className={cn("space-y-4 w-full max-w-md", side === "left" ? "md:text-right md:ml-auto" : "md:text-left")}>
     <div className={cn("inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20", side === "left" && "md:flex-row-reverse")}>
       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
       <span className="text-[9px] font-bold uppercase tracking-widest text-primary">{project.role}</span>
@@ -478,12 +478,12 @@ export default function Portfolio() {
             {featuredProjects.map((p, i) => {
               const isEven = i % 2 === 0;
               return (
-                <div 
-                  key={p.name} 
+                <div
+                  key={p.name}
                   onClick={() => setSelectedProject(p)}
                   className="relative grid grid-cols-[112px_1fr] md:grid-cols-[1fr_120px_1fr] items-center group cursor-pointer"
                 >
-                  
+
                   {/* Column 1: Desktop Left / Mobile Hidden Content Slot */}
                   <div className="hidden md:flex items-center justify-end pr-12 overflow-visible">
                     {isEven ? (
