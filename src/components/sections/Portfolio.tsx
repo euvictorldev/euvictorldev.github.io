@@ -256,7 +256,7 @@ const secondaryProjects: SecondaryProject[] = [
         <div className="space-y-2 mt-4">
           <p className="font-bold text-primary text-sm tracking-widest uppercase">⚡ Engenharia do Sistema:</p>
           <ul className="list-disc pl-5 space-y-2 text-[15px] md:text-base">
-            <li><strong className="text-white">MTProto (Orientado a Eventos):</strong> Parsing imediato de payloads simultâneos em múltiplos canais de origem utilizando Telethon.</li>
+            <li><strong className="text-white">MTProto (Orientado a Eventos):</strong> Parsing imediato de payloads simultâneos em múltiplos canais de  utilizando Telethon.</li>
             <li><strong className="text-white">Buffers Assíncronos:</strong> Filas dedicadas de uploads/downloads isoladas para evitar o congelamento da thread primária.</li>
           </ul>
         </div>

@@ -24,7 +24,7 @@ export function WhatsAppCTA({
   message = "Olá Victor! Vim do seu portfólio e quero conversar sobre um projeto.",
 }: CTAProps) {
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `${message} (origem: ${source})`,
+    `${message}`,
   )}`;
   return (
     <a
