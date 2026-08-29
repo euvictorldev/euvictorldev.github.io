@@ -15,11 +15,11 @@ export default function Research() {
     <section id="research" className="shell section-pad cv-auto">
       <SectionHeader index="01" title="Security Research" note="responsible disclosure" />
 
-      <ul className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {findings.map((f) => (
-          <li key={f.target} className="bg-bg">
-            <ScrollReveal>
-              <article className="bracket flex h-full flex-col gap-3 p-5 transition-colors hover:bg-surface">
+          <li key={f.target}>
+            <ScrollReveal className="h-full">
+              <article className="bracket flex h-full flex-col gap-3 border border-line bg-bg p-5 transition-colors hover:bg-surface">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="heading text-fluid-lg">{f.target}</h3>
                   <span className={`label ${statusTone[f.status]}`}>{f.status}</span>
