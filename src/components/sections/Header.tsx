@@ -1,5 +1,5 @@
 const nav = [
-  { label: "Exploits", href: "#exploits" },
+  { label: "Research", href: "#research" },
   { label: "Work", href: "#work" },
   { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },

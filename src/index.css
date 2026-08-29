@@ -17,9 +17,14 @@
     --primary-hot: 275 100% 74%;   /* #C77DFF */
     --primary-deep: 263 70% 50%;   /* #6D28D9 */
 
-    --critical: 342 100% 59%;      /* #FF2D6F */
-    --warn: 22 100% 62%;           /* #FF8A3D */
+    /* Severity — high stays red (orange/amber is reserved for medium/low) */
+    --critical: 342 100% 60%;      /* #FF2D6F — red */
+    --high: 0 100% 68%;            /* #FF5C5C — red */
+    --medium: 22 100% 62%;         /* #FF8A3D — orange */
+    --low: 44 92% 55%;             /* #F2B01E — amber */
+    --warn: 22 100% 62%;
     --ok: 152 76% 50%;
+    --info: 262 13% 51%;
 
     --fg: 265 30% 92%;             /* #E8E4F0 */
     --muted: 262 13% 51%;          /* #7B7391 */
@@ -37,8 +42,8 @@
     --text-4xl: clamp(2.25rem, 2rem + 1.5vw, 3.5rem);
     --text-5xl: clamp(2.75rem, 2.2rem + 2.5vw, 4.5rem);
 
-    --space-base: clamp(1.5rem, 1rem + 2vw, 3rem);
-    --section-gap: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+    --space-base: clamp(1.25rem, 0.9rem + 1.6vw, 2.25rem);
+    --section-gap: clamp(2.5rem, 1.5rem + 4vw, 4.25rem);
   }
 
   * {

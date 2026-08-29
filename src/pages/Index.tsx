@@ -1,7 +1,7 @@
 import MeshBackground from "@/components/MeshBackground";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-import Exploits from "@/components/sections/Exploits";
+import Research from "@/components/sections/Research";
 import Work from "@/components/sections/Work";
 import Stack from "@/components/sections/Stack";
 import Contact from "@/components/sections/Contact";
@@ -16,7 +16,7 @@ export default function Index() {
         <Header />
         <main>
           <Hero />
-          <Exploits />
+          <Research />
           <Work />
           <Stack />
           <Contact />

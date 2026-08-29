@@ -20,7 +20,7 @@ export default function ProjectRow({ project }: { project: Project }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-4 px-3 py-4 text-left sm:px-5"
+        className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-4 px-3 py-3 text-left sm:px-5"
       >
         <span
           aria-hidden
@@ -35,11 +35,6 @@ export default function ProjectRow({ project }: { project: Project }) {
         <span className="min-w-0">
           <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span className="heading text-fluid-base text-fg">{project.name}</span>
-            {project.security && (
-              <span className="border border-primary px-1.5 py-px text-fluid-xs uppercase tracking-[0.14em] text-primary">
-                security
-              </span>
-            )}
             <span className="label normal-case tracking-normal">{project.role}</span>
           </span>
           <span className="mt-1 block truncate text-fluid-sm text-muted">

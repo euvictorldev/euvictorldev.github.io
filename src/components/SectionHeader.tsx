@@ -8,7 +8,7 @@ export default function SectionHeader({
   note?: string;
 }) {
   return (
-    <div className="mb-10 flex items-baseline gap-4">
+    <div className="mb-6 flex items-baseline gap-4">
       <h2 className="heading text-fluid-xl whitespace-nowrap">
         <span className="text-primary">[{index}]</span>
         <span className="text-muted"> // </span>

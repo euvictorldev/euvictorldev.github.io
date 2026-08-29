@@ -2,9 +2,10 @@ import type { Severity } from "@/data/exploits";
 import { cn } from "@/lib/utils";
 
 const tone: Record<Severity, string> = {
-  P1: "border-critical text-critical",
   CRITICAL: "border-critical text-critical",
-  HIGH: "border-warn text-warn",
+  HIGH: "border-high text-high",
+  MEDIUM: "border-medium text-medium",
+  LOW: "border-low text-low",
 };
 
 export default function SeverityChip({

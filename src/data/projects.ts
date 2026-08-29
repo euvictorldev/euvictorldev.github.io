@@ -14,7 +14,6 @@ export type Project = {
   summary: string;
   bullets: string[];
   stack: string[];
-  security?: boolean;
   media?: Media;
 };
 
@@ -175,7 +174,6 @@ const all: Project[] = [
       "SHA-256 k-anonymity range queries — the plaintext password never leaves the client.",
     ],
     stack: ["Python", "OSINT", "Cryptography", "REST"],
-    security: true,
   },
   {
     id: "zomboid-discord",

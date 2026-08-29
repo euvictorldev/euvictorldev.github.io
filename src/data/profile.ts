@@ -2,19 +2,25 @@ export const profile = {
   handle: "pixo",
   name: "Victor Lobato",
   title: "Full-Stack Developer & Security Researcher",
-  bio: "Systems Analysis student. Trained at IFPA and Solyd Offensive Security. I build systems, then I try to break them.",
-  badges: [
-    { label: "TryHackMe Top 2% Global", href: "https://tryhackme.com/p/pixos" as string | null },
-    { label: "NASA 2x P1", href: null as string | null },
-  ],
+  bio: "Systems Analysis student. I build systems, then I try to break them.",
 };
 
 export const links = [
   { label: "GitHub", href: "https://github.com/euvictorldev" },
-  { label: "X", href: "https://x.com/euvictorldev" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/euvictorldev/" },
+  { label: "X", href: "https://x.com/euvictorldev" },
   { label: "Discord", href: "https://discord.gg/AF3Hgvjxd5" },
   { label: "Instagram", href: "https://instagram.com/euvictorldev" },
+];
+
+export const certifications = [
+  {
+    name: "Technician in Informatics",
+    issuer: "IFPA — Instituto Federal do Pará",
+    note: "Integrated technical high-school diploma",
+  },
+  // TODO(victor): set the exact Solyd course name here if you want it precise.
+  { name: "Offensive Security Training", issuer: "Solyd Offensive Security", note: null as string | null },
 ];
 
 export const reading = [
@@ -25,7 +31,7 @@ export const reading = [
 export const stack = [
   { group: "LANG", items: ["Python", "TypeScript", "JavaScript", "PHP", "SQL"] },
   { group: "BACKEND", items: ["FastAPI", "Node.js", "Supabase", "PostgreSQL", "Redis"] },
-  { group: "FRONTEND", items: ["React", "Next.js", "Tailwind", "Flutter"] },
+  { group: "FRONTEND", items: ["React", "Next.js", "Tailwind"] },
   { group: "OPS", items: ["Docker", "Git", "Linux"] },
   { group: "SECURITY", items: ["Burp Suite", "nmap", "OSINT", "Recon", "Reversing"] },
   { group: "AI", items: ["Claude", "Gemini", "ChatGPT", "DeepSeek"] },

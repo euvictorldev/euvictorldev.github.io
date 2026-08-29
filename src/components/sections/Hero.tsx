@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { profile } from "@/data/profile";
+import { profile, links } from "@/data/profile";
 
 const PROMPT = "pixo@root:~$ whoami";
 
@@ -28,7 +28,7 @@ export default function Hero() {
   const done = typed.length === PROMPT.length;
 
   return (
-    <section id="top" className="shell relative flex min-h-[82vh] flex-col justify-center py-20">
+    <section id="top" className="shell relative flex min-h-[66vh] flex-col justify-center py-16">
       <div className="max-w-3xl">
         <p className="text-fluid-sm text-muted" aria-label={PROMPT}>
           <span aria-hidden>{typed}</span>
@@ -53,33 +53,28 @@ export default function Hero() {
           {profile.bio}
         </p>
 
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {profile.badges.map((b) => {
-            const cls =
-              "inline-block border border-primary/70 px-3 py-1.5 text-fluid-xs uppercase tracking-[0.16em] text-primary transition-colors";
-            return (
-              <li key={b.label}>
-                {b.href ? (
-                  <a
-                    href={b.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${cls} hover:bg-primary hover:text-bg`}
-                  >
-                    {b.label} ↗
-                  </a>
-                ) : (
-                  <span className={cls}>{b.label}</span>
-                )}
-              </li>
-            );
-          })}
+        <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1 text-fluid-sm uppercase tracking-[0.14em] text-muted transition-colors hover:text-primary"
+              >
+                {l.label}
+                <span aria-hidden className="text-primary/60 transition-colors group-hover:text-primary">
+                  ↗
+                </span>
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <a
-        href="#exploits"
-        className="label mt-16 inline-flex w-fit items-center gap-2 transition-colors hover:text-primary"
+        href="#research"
+        className="label mt-10 inline-flex w-fit items-center gap-2 transition-colors hover:text-primary"
       >
         <span aria-hidden>↓</span> scroll
       </a>
