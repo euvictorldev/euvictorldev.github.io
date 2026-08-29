@@ -9,7 +9,7 @@ export default function SectionHeader({
 }) {
   return (
     <div className="mb-6 flex items-baseline gap-4">
-      <h2 className="heading text-fluid-xl whitespace-nowrap">
+      <h2 className="heading min-w-0 text-fluid-xl">
         <span className="text-primary">[{index}]</span>
         <span className="text-muted"> // </span>
         {title}
