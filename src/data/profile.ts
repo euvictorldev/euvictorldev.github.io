@@ -15,12 +15,17 @@ export const links = [
 
 export const certifications = [
   {
+    name: "SYCP — Pentest do Zero ao Profissional (v2022)",
+    issuer: "Solyd Offensive Security",
+    note: null as string | null,
+    href: "https://solyd.com.br/verificar/RxF8k5LAk7/" as string | null,
+  },
+  {
     name: "Technician in Informatics",
     issuer: "IFPA — Instituto Federal do Pará",
-    note: "Integrated technical high-school diploma",
+    note: null as string | null,
+    href: null as string | null,
   },
-  // TODO(victor): set the exact Solyd course name here if you want it precise.
-  { name: "Offensive Security Training", issuer: "Solyd Offensive Security", note: null as string | null },
 ];
 
 export const reading = [

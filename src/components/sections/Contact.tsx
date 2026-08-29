@@ -35,15 +35,43 @@ export default function Contact() {
           <div>
             <p className="label mb-3">Certifications</p>
             <ul className="border-t border-line">
-              {certifications.map((c) => (
-                <li key={c.name} className="border-b border-line px-3 py-3">
-                  <p className="text-fluid-sm text-fg">{c.name}</p>
-                  <p className="label mt-1 normal-case tracking-normal">
-                    {c.issuer}
-                    {c.note ? ` · ${c.note}` : ""}
-                  </p>
-                </li>
-              ))}
+              {certifications.map((c) => {
+                const body = (
+                  <>
+                    <p className="flex items-center gap-1.5 text-fluid-sm text-fg">
+                      {c.name}
+                      {c.href && (
+                        <span
+                          aria-hidden
+                          className="text-muted transition-colors group-hover:text-primary"
+                        >
+                          ↗
+                        </span>
+                      )}
+                    </p>
+                    <p className="label mt-1 normal-case tracking-normal">
+                      {c.issuer}
+                      {c.note ? ` · ${c.note}` : ""}
+                    </p>
+                  </>
+                );
+                return (
+                  <li key={c.name} className="border-b border-line">
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bracket group block px-3 py-3 transition-colors hover:bg-surface"
+                      >
+                        {body}
+                      </a>
+                    ) : (
+                      <div className="px-3 py-3">{body}</div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
