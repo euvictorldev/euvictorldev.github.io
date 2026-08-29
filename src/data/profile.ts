@@ -4,8 +4,7 @@ export const profile = {
   title: "Full-Stack Developer & Security Researcher",
   bio: "Systems Analysis student. Trained at IFPA and Solyd Offensive Security. I build systems, then I try to break them.",
   badges: [
-    // TODO(victor): drop your TryHackMe profile URL in here to make this a link.
-    { label: "TryHackMe Top 1% Global", href: null as string | null },
+    { label: "TryHackMe Top 2% Global", href: "https://tryhackme.com/p/pixos" as string | null },
     { label: "NASA 2x P1", href: null as string | null },
   ],
 };

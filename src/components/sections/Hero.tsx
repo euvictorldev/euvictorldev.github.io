@@ -54,13 +54,26 @@ export default function Hero() {
         </p>
 
         <ul className="mt-8 flex flex-wrap gap-3">
-          {profile.badges.map((b) => (
-            <li key={b.label}>
-              <span className="inline-block border border-primary/70 px-3 py-1.5 text-fluid-xs uppercase tracking-[0.16em] text-primary">
-                {b.label}
-              </span>
-            </li>
-          ))}
+          {profile.badges.map((b) => {
+            const cls =
+              "inline-block border border-primary/70 px-3 py-1.5 text-fluid-xs uppercase tracking-[0.16em] text-primary transition-colors";
+            return (
+              <li key={b.label}>
+                {b.href ? (
+                  <a
+                    href={b.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${cls} hover:bg-primary hover:text-bg`}
+                  >
+                    {b.label} ↗
+                  </a>
+                ) : (
+                  <span className={cls}>{b.label}</span>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
