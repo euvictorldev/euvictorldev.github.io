@@ -63,7 +63,10 @@ export default function Hero() {
                 className="group inline-flex items-center gap-1 text-fluid-sm uppercase tracking-[0.14em] text-muted transition-colors hover:text-primary"
               >
                 {l.label}
-                <span aria-hidden className="text-primary/60 transition-colors group-hover:text-primary">
+                <span
+                  aria-hidden
+                  className="inline-block text-primary/60 transition-all duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
+                >
                   ↗
                 </span>
               </a>
