@@ -17,7 +17,7 @@ interface ScrollRevealProps {
 export default function ScrollReveal({ 
   children, 
   className, 
-  animation = "animate-fade-rise",
+  animation = "rise",
   once = true,
   threshold = 0.15,
   delay

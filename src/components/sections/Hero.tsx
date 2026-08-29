@@ -1,137 +1,75 @@
-import { useEffect, useRef } from "react";
-import { CTAGroup } from "../CTAButtons";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { profile } from "@/data/profile";
 
-const VIDEO_URL =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
+const PROMPT = "pixo@root:~$ whoami";
 
-const navLinks = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Contato", href: "#contato" },
-];
-
-export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+function useTypewriter(text: string, speed = 55) {
+  const [out, setOut] = useState("");
 
   useEffect(() => {
-    const checkVisibilityAndModal = () => {
-      if (videoRef.current) {
-        const isModalOpen = document.body.classList.contains("modal-open");
-        const isVisible = videoRef.current.getBoundingClientRect().bottom > 0;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setOut(text);
+      return;
+    }
+    let i = 0;
+    const id = window.setInterval(() => {
+      i += 1;
+      setOut(text.slice(0, i));
+      if (i >= text.length) window.clearInterval(id);
+    }, speed);
+    return () => window.clearInterval(id);
+  }, [text, speed]);
 
-        if (isVisible && !isModalOpen) {
-          videoRef.current.play().catch(() => { });
-        } else {
-          videoRef.current.pause();
-        }
-      }
-    };
+  return out;
+}
 
-    const observer = new MutationObserver(checkVisibilityAndModal);
-    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
-    window.addEventListener("scroll", checkVisibilityAndModal, { passive: true });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", checkVisibilityAndModal);
-    };
-  }, []);
-
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+export default function Hero() {
+  const typed = useTypewriter(PROMPT);
+  const done = typed.length === PROMPT.length;
 
   return (
-    <header
-      className="relative min-h-[100dvh] w-full overflow-hidden bg-background"
-      style={{
-        backgroundImage: `url('${base}/images/hero-background-static.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-    >
-      {/* Background video */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster={`${base}/images/hero-background-static.png`}
-        className="absolute inset-0 z-0 h-full w-full object-cover opacity-60"
-        aria-hidden="true"
-      >
-        <source src={VIDEO_URL} type="video/mp4" />
-      </video>
+    <section id="top" className="shell relative flex min-h-[82vh] flex-col justify-center py-20">
+      <div className="max-w-3xl">
+        <p className="text-fluid-sm text-muted" aria-label={PROMPT}>
+          <span aria-hidden>{typed}</span>
+          <span aria-hidden className="caret text-primary">
+            █
+          </span>
+        </p>
 
-      {/* Dark + emerald gradient overlay for legibility & brand */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/80 via-background/60 to-background" />
-      <div
-        className="absolute inset-0 z-[1] opacity-30"
-        style={{ background: "var(--gradient-radial-glow)" }}
-      />
-
-      {/* Navigation */}
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 py-5">
-        <a href="#" className="group font-display text-fluid-2xl tracking-tight text-foreground transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
-          @euvictorl<span className="text-primary group-hover:animate-pulse">dev</span>
-        </a>
-
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <Button
-          variant="outline"
-          asChild
-          className="liquid-glass hidden sm:inline-flex rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white"
-        >
-          <a href="#contato">Falar comigo</a>
-        </Button>
-      </nav>
-
-      {/* Hero content */}
-      <section className="relative z-10 flex flex-col items-center justify-center px-6 pt-12 pb-32 md:pt-20 md:pb-40 text-center">
-        <Badge
-          variant="outline"
-          className="liquid-glass mb-8 gap-2.5 px-4 py-1.5 text-xs sm:text-sm font-medium border-white/20 bg-white/5 text-white/90 animate-fade-rise hover:bg-white/10 transition-colors cursor-default"
-        >
-          <span className="pulse-dot" />
-          Disponível para novos projetos
-        </Badge>
-
-        <h1
-          className="animate-fade-rise-delay font-display text-balance text-fluid-6xl leading-[0.98] tracking-[-0.03em] max-w-5xl text-foreground"
-        >
-          Eu transformo suas{" "}
-          <em className="not-italic text-primary">ideias</em> em ferramentas que{" "}
-          <em className="not-italic text-muted-foreground">trabalham por você.</em>
+        <h1 className="heading mt-6 text-fluid-5xl">
+          {profile.handle}
+          <span className="text-primary">.</span>
         </h1>
 
-        <p className="animate-fade-rise-delay mt-8 max-w-2xl text-fluid-base leading-relaxed text-muted-foreground text-balance">
-          Crio seu site, seus robôs de atendimento e seus aplicativos para facilitar sua vida.
-          Você ganha tempo e eu cuido de toda a tecnologia de um jeito simples.
+        <p
+          className="mt-4 text-fluid-lg text-fg transition-opacity duration-500"
+          style={{ opacity: done ? 1 : 0 }}
+        >
+          {profile.name} — {profile.title}
         </p>
 
-        <div className="animate-fade-rise-delay-2 mt-12">
-          <CTAGroup source="hero" size="lg" />
-        </div>
-
-        <p className="animate-fade-rise-delay-3 mt-8 text-xs text-muted-foreground/70">
-          Resposta em poucas horas · Orçamento sem compromisso
+        <p className="mt-4 max-w-xl text-fluid-sm leading-relaxed text-muted">
+          {profile.bio}
         </p>
-      </section>
-    </header>
+
+        <ul className="mt-8 flex flex-wrap gap-3">
+          {profile.badges.map((b) => (
+            <li key={b.label}>
+              <span className="inline-block border border-primary/70 px-3 py-1.5 text-fluid-xs uppercase tracking-[0.16em] text-primary">
+                {b.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <a
+        href="#exploits"
+        className="label mt-16 inline-flex w-fit items-center gap-2 transition-colors hover:text-primary"
+      >
+        <span aria-hidden>↓</span> scroll
+      </a>
+    </section>
   );
 }
