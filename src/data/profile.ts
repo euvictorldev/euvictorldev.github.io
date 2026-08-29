@@ -27,7 +27,7 @@ export const certifications = [
   },
 ];
 
-export const reading = [
+export const books = [
   { title: "OWASP Web Security Testing Guide", short: "WSTG", status: "Read" },
   { title: "OWASP Application Security Verification Standard", short: "ASVS", status: "Read" },
 ];

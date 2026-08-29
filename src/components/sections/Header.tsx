@@ -1,5 +1,6 @@
 const nav = [
   { label: "Research", href: "#research" },
+  { label: "Certs", href: "#credentials" },
   { label: "Work", href: "#work" },
   { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },

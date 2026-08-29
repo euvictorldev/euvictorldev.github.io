@@ -6,7 +6,7 @@ export default function Work() {
   return (
     <section id="work" className="shell section-pad cv-auto">
       <SectionHeader
-        index="02"
+        index="03"
         title="Work"
         note={`${projects.length} projects · newest first`}
       />
