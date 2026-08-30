@@ -20,7 +20,7 @@ export const certifications = [
     href: "https://solyd.com.br/verificar/RxF8k5LAk7/" as string | null,
   },
   {
-    name: "Technician in Informatics",
+    name: "Technical Diploma in Information Technology",
     issuer: "IFPA — Instituto Federal do Pará",
     note: null as string | null,
     href: null as string | null,
