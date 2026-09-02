@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — pixo</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#08070B" />
+
+  <script>
+    // GitHub Pages paths are case-sensitive, so /lor and /LOR 404 even though
+    // /LoR/ exists. Fold any casing (and anything under it) back onto /LoR/.
+    (function () {
+      var m = location.pathname.match(/^\/lor(\/.*)?$/i);
+      if (m) location.replace("/LoR" + (m[1] || "/") + location.search + location.hash);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: 262 22% 4%;
+      --surface: 260 22% 7%;
+      --border: 260 22% 17%;
+      --primary: 275 91% 65%;
+      --fg: 265 30% 92%;
+      --muted: 262 13% 51%;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --text-xs: clamp(0.65rem, 0.6rem + 0.25vw, 0.75rem);
+      --text-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-5xl: clamp(2.75rem, 2.2rem + 2.5vw, 4.5rem);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem clamp(1rem, 4vw, 2.5rem);
+      background-color: hsl(var(--bg));
+      color: hsl(var(--fg));
+      font-family: var(--font-mono);
+      font-size: var(--text-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: hsl(var(--primary) / 0.35);
+      color: hsl(var(--fg));
+    }
+
+    main {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: hsl(var(--muted));
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0.5rem 0 0;
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: hsl(var(--primary));
+    }
+
+    p.msg {
+      margin: 1rem 0 1.75rem;
+      color: hsl(var(--muted));
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    a.btn {
+      display: inline-block;
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--muted));
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    a.btn:hover,
+    a.btn:focus-visible {
+      color: hsl(var(--fg));
+      border-color: hsl(var(--primary));
+      background-color: hsl(var(--surface));
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="label">Error</p>
+    <h1>404</h1>
+    <p class="msg">//&nbsp;this page doesn&rsquo;t exist. paths here are case-sensitive.</p>
+    <div class="actions">
+      <a class="btn" href="/">&larr; Back to portfolio</a>
+      <a class="btn" href="/LoR/">Letter of Recognition &nearr;</a>
+    </div>
+  </main>
+</body>
+
+</html>
