@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letter of Recognition — NASA · pixo</title>
+  <meta name="description"
+    content="NASA Letter of Recognition awarded to Victor Lobato (pixo) for vulnerabilities reported through NASA's Vulnerability Disclosure Program." />
+  <meta name="author" content="pixo" />
+
+  <meta property="og:title" content="Letter of Recognition — NASA · pixo" />
+  <meta property="og:description"
+    content="NASA Letter of Recognition awarded to Victor Lobato (pixo) for vulnerabilities reported through NASA's Vulnerability Disclosure Program." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://euvictorldev.github.io/LoR/" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="canonical" href="https://euvictorldev.github.io/LoR/" />
+  <meta name="theme-color" content="#08070B" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: 262 22% 4%;
+      --surface: 260 22% 7%;
+      --border: 260 22% 17%;
+      --primary: 275 91% 65%;
+      --critical: 342 100% 60%;
+      --fg: 265 30% 92%;
+      --muted: 262 13% 51%;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --text-xs: clamp(0.65rem, 0.6rem + 0.25vw, 0.75rem);
+      --text-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: hsl(var(--bg));
+      color: hsl(var(--fg));
+      font-family: var(--font-mono);
+      font-size: var(--text-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: hsl(var(--primary) / 0.35);
+      color: hsl(var(--fg));
+    }
+
+    .label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: hsl(var(--muted));
+      margin: 0;
+    }
+
+    .heading {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+      font-size: var(--text-lg);
+    }
+
+    header {
+      flex: none;
+      border-bottom: 1px solid hsl(var(--border));
+      background: hsl(var(--bg));
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1180px;
+      margin-inline: auto;
+      padding: 1rem clamp(1rem, 4vw, 2.5rem);
+    }
+
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.25rem;
+    }
+
+    .chip {
+      display: inline-block;
+      border: 1px solid hsl(var(--critical));
+      color: hsl(var(--critical));
+      padding: 3px 8px;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    a.btn {
+      display: inline-block;
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--muted));
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    a.btn:hover,
+    a.btn:focus-visible {
+      color: hsl(var(--fg));
+      border-color: hsl(var(--primary));
+      background-color: hsl(var(--surface));
+    }
+
+    main {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+    }
+
+    .viewer {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      border: 0;
+      display: block;
+      background: hsl(var(--surface));
+    }
+
+    /* Shown only if the browser cannot render the PDF inline */
+    .fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      height: 100%;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    footer {
+      flex: none;
+      border-top: 1px solid hsl(var(--border));
+    }
+
+    footer .shell {
+      padding-block: 0.75rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="shell bar">
+      <div>
+        <p class="label">Letter of Recognition</p>
+        <h1 class="heading">NASA <span class="chip">2x Critical</span></h1>
+      </div>
+
+      <nav class="actions">
+        <a class="btn" href="/#research">&larr; Back to portfolio</a>
+        <a class="btn" href="/LoR/nasa-letter-of-recognition.pdf" target="_blank" rel="noopener noreferrer">Open PDF
+          &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <object class="viewer" data="/LoR/nasa-letter-of-recognition.pdf#view=Fit&amp;toolbar=1"
+      type="application/pdf" aria-label="NASA Letter of Recognition (PDF)">
+      <div class="fallback">
+        <p class="label">Your browser can&rsquo;t display PDFs inline.</p>
+        <a class="btn" href="/LoR/nasa-letter-of-recognition.pdf" target="_blank" rel="noopener noreferrer">
+          Open the letter in a new tab &nearr;
+        </a>
+      </div>
+    </object>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <p class="label">
+        //&nbsp;issued by NASA&rsquo;s Vulnerability Disclosure Program &mdash; vulnerabilities reported through
+        responsible disclosure.
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
