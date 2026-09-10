@@ -5,6 +5,9 @@ export default function Footer() {
         <span className="label">
           © {new Date().getFullYear()} pixo — victor lobato
         </span>
+        <a href="/methodology/" className="label transition-colors hover:text-primary">
+          security notes ↗
+        </a>
         <span className="label">built to be broken into</span>
       </div>
     </footer>
