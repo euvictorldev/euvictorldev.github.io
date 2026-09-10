@@ -232,7 +232,7 @@ h1 .accent { color: var(--accent); }
   align-items: center;
   margin: 40px 0 0 0;
   padding: 20px 24px;
-  background: linear-gradient(90deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 107, 53, 0.02) 100%);
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0.02) 100%);
   border: 1px solid var(--border);
   border-radius: 8px;
 }
@@ -256,13 +256,19 @@ h1 .accent { color: var(--accent); }
   margin: 0 4px;
 }
 
+/* One continuous warm-up across the 3 segments — green (Zero) through
+   the purple brand hues to red (Advanced) — instead of each segment
+   repeating the full gradient on its own. Selected by position among
+   the .progression's div children (label, then the 3 tracks). */
 .progression-track::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--green), var(--amber), var(--accent), var(--red));
   border-radius: 2px;
 }
+.progression-track:nth-of-type(2)::after { background: linear-gradient(90deg, var(--green), var(--blue)); }
+.progression-track:nth-of-type(3)::after { background: linear-gradient(90deg, var(--blue), var(--accent)); }
+.progression-track:nth-of-type(4)::after { background: linear-gradient(90deg, var(--accent), var(--red)); }
 
 .progression-stop {
   font-family: 'JetBrains Mono', monospace;
@@ -807,7 +813,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   z-index: 1000;
   transform: translateY(-160%);
   background: var(--accent);
-  color: #0a0c11;
+  color: #08070b;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 700;
@@ -826,7 +832,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   left: 0;
   height: 3px;
   width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--amber));
+  background: linear-gradient(90deg, var(--accent), var(--red));
   z-index: 900;
   transition: width 0.1s linear;
 }
@@ -884,8 +890,8 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   padding: 11px 22px; border-radius: 7px; border: 1px solid transparent;
   cursor: pointer; transition: all 0.15s ease;
 }
-.btn-primary { background: var(--accent); color: #0a0c11; }
-.btn-primary:hover { background: #ff855c; }
+.btn-primary { background: var(--accent); color: #08070b; }
+.btn-primary:hover { background: var(--blue); }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-light); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -910,7 +916,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 #back-to-top {
   position: fixed; bottom: 26px; right: 26px; z-index: 800;
   width: 44px; height: 44px; border-radius: 50%;
-  background: var(--accent); color: #0a0c11; border: none; cursor: pointer;
+  background: var(--accent); color: #08070b; border: none; cursor: pointer;
   font-size: 20px; line-height: 1;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; visibility: hidden; transform: translateY(10px);
@@ -918,7 +924,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 #back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-#back-to-top:hover { background: #ff855c; }
+#back-to-top:hover { background: var(--blue); }
 #back-to-top:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* Mobile nav collapse — only active when JS is present */
