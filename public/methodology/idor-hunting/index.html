@@ -1554,6 +1554,32 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
         </div>
       </div>
 
+      <h3><span class="num">→</span>Nested resources — the parent-child ownership gap</h3>
+      <p>
+        The single-ID swap above is the textbook case. The pattern that survives manual testing far more often lives one level deeper: <strong>nested REST resources where the server verifies the parent but never the child</strong>. Given <code>/accounts/{accountId}/transactions/{transactionId}</code>, most implementations correctly check "does the caller own <code>accountId</code>?" — and then trust that <code>transactionId</code> belongs to that account, because in the happy path it always does. Nothing forces the server to re-verify the parent-child relationship when you supply a <code>transactionId</code> that belongs to someone else's account.
+      </p>
+      <div class="callout pro">
+        <div class="callout-title">// Why this is the highest-yield test in nested APIs</div>
+        <p>This is <em>not</em> the same bug as a plain single-ID IDOR — the object-level check on <code>accountId</code> genuinely passes, which is exactly why teams believe the endpoint is protected. The gap only shows up when the parent is <strong>yours</strong> and the child is <strong>someone else's</strong>. Almost every SaaS with nested resources (projects/tasks, orgs/members, folders/files, carts/items, tickets/comments) has this shape somewhere.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span>Parent-child ownership probe</span><span class="code-header-tag">FUZZ</span></div>
+<pre><span class="tk-cmt"># Baseline: your own project, your own task — 200 as expected</span>
+<span class="tk-kw">GET</span> /api/projects/<span class="tk-id">SELF_PROJECT</span>/tasks/<span class="tk-id">SELF_TASK</span>
+
+<span class="tk-cmt"># The actual test: YOUR project id, VICTIM's task id</span>
+<span class="tk-kw">GET</span> /api/projects/<span class="tk-id">SELF_PROJECT</span>/tasks/<span class="tk-id">VICTIM_TASK</span>
+<span class="tk-cmt"># If this returns 200 with the victim's task data ⇒ the parent check passed
+# but the child was never verified to belong to that parent. Confirmed IDOR.</span>
+
+<span class="tk-cmt"># Also test the inverse pairing and every mutating method:</span>
+<span class="tk-kw">PATCH</span> /api/projects/<span class="tk-id">SELF_PROJECT</span>/tasks/<span class="tk-id">VICTIM_TASK</span>
+<span class="tk-kw">DELETE</span> /api/projects/<span class="tk-id">SELF_PROJECT</span>/tasks/<span class="tk-id">VICTIM_TASK</span></pre>
+      </div>
+      <p>
+        Generalize this across every nested route the app exposes — comments under tickets, members under organizations, files under folders, line-items under invoices, replies under threads. The recipe is always the same: <strong>fix the parent you legitimately own, iterate the child from a different tenant or account</strong>, and test it against every HTTP method the route accepts, exactly as in the method matrix below.
+      </p>
+
       <h3><span class="num">→</span>Don't just test GET</h3>
       <p>The fastest way to leave money on the table is testing only read endpoints. The same identifier flowing through <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, or <code>DELETE</code> often has different (or absent) authorization. Always re-test every parameter against every method the server accepts:</p>
 
@@ -1722,6 +1748,38 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
         <div class="callout-title">// Modern winner — Unicode &amp; whitespace</div>
         <p>Several 2024-2025 writeups documented bypasses using zero-width Unicode characters or trailing whitespace in path segments — <code>/api/users/7011%E2%80%8B</code> (zero-width space) or <code>/api/users/%097011</code> (tab character). The router strips them and routes the request; the WAF and auth middleware see a different path and let it through.</p>
       </div>
+
+      <h3><span class="num">→</span>Request smuggling as an authorization bypass</h3>
+      <p>
+        Every bypass so far assumes the request that reaches the authorization check is the same request the application handler acts on. <strong>HTTP request smuggling breaks that assumption at the transport layer</strong>: when a front-end (load balancer, reverse proxy, CDN) and the back-end application server disagree on where one request ends and the next begins, an attacker can smuggle a second, hidden request that the front-end never inspects — including never running whatever authorization/WAF logic lives on the front-end — but that the back-end still processes as a legitimate, fully-formed request.
+      </p>
+      <p>
+        This matters specifically for IDOR when access control is enforced at the edge rather than in the application itself — a common pattern in microservice/gateway architectures where an internal header (e.g. <code>X-Internal-Role</code>, <code>X-Account-Id</code>) is stripped or overwritten by the front-end for external traffic, but a smuggled request can arrive at the back-end carrying that header intact, because the front-end never got the chance to sanitize a request it doesn't know exists.
+      </p>
+      <div class="code-block">
+        <div class="code-header"><span>Where to look for a smuggling-enabled authz bypass</span><span class="code-header-tag">FUZZ</span></div>
+<pre><span class="tk-cmt"># 1. Confirm desync exists first (CL.TE / TE.CL / TE.TE) with a timing probe —
+#    same methodology as any request smuggling test, not IDOR-specific.
+
+# 2. Once desync is confirmed, smuggle a request to the SAME sensitive endpoint
+#    you already found gets a 403 through normal channels:</span>
+<span class="tk-kw">POST</span> / HTTP/1.1
+Content-Length: <span class="tk-id">13</span>
+Transfer-Encoding: chunked
+
+0
+
+<span class="tk-kw">GET</span> /api/admin/users/<span class="tk-id">VICTIM_ID</span> HTTP/1.1
+X-Internal-Trusted: <span class="tk-id">true</span>
+
+<span class="tk-cmt"># If the smuggled request reaches the back-end without the front-end's
+# auth/header-sanitization layer ever seeing it ⇒ the object-level check
+# you fought with in section 04 above is fully bypassed, not just evaded once.</span></pre>
+      </div>
+      <div class="callout warn">
+        <div class="callout-title">// Scope this carefully</div>
+        <p>Request smuggling desync tests are inherently riskier than a single-object IDOR swap — a bad chunked-encoding probe can poison the connection queue for other users on a shared front-end. Confirm the program's rules explicitly allow desync/smuggling testing, always use a single low-volume probe first (never a burst), and stop immediately if you see any sign the response queue for other clients has desynced.</p>
+      </div>
     </section>
 
 
@@ -1854,6 +1912,32 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
         <p>If a target uses persisted queries, find out <em>which</em> kind. <strong>Automatic Persisted Queries (APQ)</strong> are a bandwidth optimization — the client can still register and run <em>any</em> new query; the GraphQL Yoga docs say it outright: "APQ do not provide any security features." Every technique above still applies. Only a true <strong>safelist / persisted-query list (PQL)</strong> — a fixed allowlist that rejects unknown queries — narrows the surface, and even then an allowlisted query with an ID argument can still be IDOR-vulnerable.</p>
       </div>
 
+      <h3><span class="num">→</span>Subscriptions — the door query/mutation testing skips</h3>
+      <p>
+        Everything above tests <code>Query</code> and <code>Mutation</code> types. Real-time apps add a third root type, <code>Subscription</code>, delivered over a persistent WebSocket — and it has its own authorization lifecycle that's easy to miss because it doesn't look like a normal request/response pair. Authentication for a GraphQL subscription typically happens <strong>once</strong>, in the <code>connection_init</code> payload (a browser can't send custom headers on a WebSocket upgrade, so the token travels in the message body instead) — and then every subsequent <code>subscribe</code> operation on that same connection is often trusted without being re-checked against the resource being subscribed to.
+      </p>
+      <div class="code-block">
+        <div class="code-header"><span>Subscription authorization probe</span><span class="code-header-tag">WS</span></div>
+<pre><span class="tk-cmt"># Connect and authenticate once as Account A</span>
+{"type": "connection_init", "payload": {"authorization": "Bearer <span class="tk-str">&lt;A's token&gt;</span>"}}
+
+<span class="tk-cmt"># Now subscribe to a resource that belongs to Account B — on the SAME connection</span>
+{"type": "subscribe", "payload": {"query": "subscription { orderUpdated(id: <span class="tk-id">\"VICTIM_ORDER\"</span>) { status total } }"}}
+<span class="tk-cmt"># If updates for B's order start streaming to A's connection ⇒ the subscribe-time
+# authorization check never re-verified ownership of the specific argument.
+
+# Also test: does the server drop the subscription on session logout/revocation,
+# or does data keep streaming on an already-open socket after the token is invalidated?</span></pre>
+      </div>
+      <h3><span class="num">→</span>Federated gateways — where the reference resolver skips authorization entirely</h3>
+      <p>
+        In a federated GraphQL setup (Apollo Federation and similar), a type like <code>User</code> can be "owned" by one subgraph and <strong>extended</strong> by another via <code>@key(fields: "id")</code>. When a query needs the extended fields, the gateway's query planner calls the extending subgraph's <strong>reference resolver</strong> directly, passing only <code>{ __typename, id }</code> — it never re-enters the owning subgraph's resolver tree, and never carries whatever authorization logic lives there. If the extending subgraph assumes "the gateway already checked this" and skips its own ownership check on the reference resolver, any caller who can reach that extended field gets the object regardless of who owns it.
+      </p>
+      <div class="callout pro">
+        <div class="callout-title">// Test it by targeting the extension, not the base type</div>
+        <p>If <code>query { user(id: "victim") { email } }</code> correctly 403s, don't stop there — find a query path that reaches the <em>same</em> user object through a field owned by a <em>different</em> subgraph (e.g. <code>query { order(id: "self-order") { customer { email } } }</code> where <code>customer</code> resolves <code>User</code> via a different service). Field-level per-subgraph authorization libraries (e.g. graphql-shield-style rules) are commonly configured per-subgraph and simply have no rule at all for a field that only exists because of federation — meaning the "gap" isn't a bug in one resolver, it's a resolver nobody thought to write a rule for.</p>
+      </div>
+
       <div class="checklist">
         <div class="checklist-title">GraphQL IDOR checklist</div>
         <ul class="checklist-items">
@@ -1889,6 +1973,37 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
         <li><strong>IDOR + mass assignment.</strong> An object-update endpoint that accepts extra fields beyond what the frontend sends (<code>role: "admin"</code>, <code>tenant_id: 0</code>) and applies them.</li>
         <li><strong>IDOR + cache deception.</strong> An IDOR that produces a personalized response, combined with a cache that stores it under a public-looking URL — exposes one user's data to everyone.</li>
       </ul>
+
+      <h3><span class="num">→</span>Web cache deception &amp; SSR cross-user leaks — the deep dive</h3>
+      <p>
+        The one-line mention above ("IDOR + cache deception") is really its own attack surface, and it's grown well past the classic <code>/account.php/nonexistent.css</code> extension trick. The core mechanism is always a <strong>parser mismatch</strong>: the cache layer decides "cacheable, and here's the key" using different logic than the origin server uses to decide "here's the response body." When those two disagree, one user's personalized response gets stored under a URL the cache treats as public — and the next visitor to that URL gets served someone else's data.
+      </p>
+      <div class="code-block">
+        <div class="code-header"><span>Cache-key confusion vectors to try on any cached, authenticated route</span><span class="code-header-tag">FUZZ</span></div>
+<pre><span class="tk-cmt"># Extension swap — cache treats it as a static asset, origin still returns the dynamic page</span>
+GET /account/settings<span class="tk-id">.css</span>
+GET /account/settings<span class="tk-id">.js</span>
+
+<span class="tk-cmt"># Delimiter confusion — cache and origin disagree on where the path ends</span>
+GET /account/settings<span class="tk-id">%23</span>/fake.css
+GET /account/settings<span class="tk-id">;</span>/fake.js
+GET /account/settings<span class="tk-id">%3f</span>fake=1
+
+<span class="tk-cmt"># Path confusion via traversal the cache normalizes but the origin doesn't (or vice versa)</span>
+GET /static/../account/settings</pre>
+      </div>
+      <p>
+        The 2025-2026 variant of this same class shows up at the framework level, not just the CDN. Server-side-rendered apps that fetch personalized data inside <code>getServerSideProps</code>-style functions can have that rendered HTML — or the underlying data fetch — cached and replayed to a different user, if the framework's cache-key derivation doesn't fully account for the authenticated session. Confirmed CVEs in this exact shape hit Next.js: one where a crafted request could make an SSR response get treated as static and cached (<code>CVE-2024-46982</code>), and a later "cache confusion" case where a server-side fetch keyed only by URL returned another user's cached POST-response body under the same route (<code>CVE-2026-64648</code>).
+      </p>
+      <div class="checklist">
+        <div class="checklist-title">Cache/SSR IDOR checklist</div>
+        <ul class="checklist-items">
+          <li>Identify every route that is both <strong>authenticated/personalized</strong> and sits <strong>behind a CDN or edge cache</strong> — check response headers (<code>Cache-Control</code>, <code>CDN-Cache-Control</code>, <code>Age</code>, <code>X-Cache</code>) for anything other than <code>private</code>/<code>no-store</code></li>
+          <li>Try each extension-swap and delimiter-confusion variant above against that route while authenticated as Account B, then request the bare cached URL as Account A (or unauthenticated) and see if B's data comes back</li>
+          <li>If the app is a known SSR framework (Next.js, Nuxt, SvelteKit, Remix), check the framework's changelog/advisories for cache-key CVEs matching its exact version before assuming it's safe</li>
+          <li>Confirm with two accounts and a timestamp: request as B first, then immediately as A from a cold/incognito session — a hit that returns B's data on the very first A request (no B request needed for the cache to already be warm) is the strongest possible proof</li>
+        </ul>
+      </div>
 
       <div class="callout danger">
         <div class="callout-title">// Real-world chain &middot; Kia web portal (2024)</div>
@@ -1944,6 +2059,41 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
 <span class="tk-cmt"># If the server starts streaming B's doc updates → IDOR</span></pre>
       </div>
 
+      <h3><span class="num">→</span>Pre-signed URL &amp; cloud storage IDOR</h3>
+      <p>
+        File upload/download in modern SaaS almost never goes through the app server directly — it's a pre-signed URL to S3, GCS, or Azure Blob that the client hits directly. The authorization decision happens once, at <em>URL-generation time</em>, on the app server. Everything after that — the actual GET/PUT against the storage bucket — is enforced only by whatever the signature covers. That gap between "decided" and "enforced" is where this class of IDOR lives.
+      </p>
+      <div class="code-block">
+        <div class="code-header"><span>Pre-signed URL generation — where to attack it</span><span class="code-header-tag">FUZZ</span></div>
+<pre><span class="tk-cmt"># 1. Object-key tampering — does the server re-check ownership of the key you asked for,
+#    or does it blindly sign whatever key the client requests?</span>
+<span class="tk-kw">POST</span> /api/get-presigned-url
+{"objectKey": "<span class="tk-id">uploads/2026/u-VICTIM/invoice.pdf</span>"}
+<span class="tk-cmt"># If it returns a valid signed URL for a key you don't own ⇒ IDOR at generation time
+
+# 2. Empty / wildcard bucket — some implementations skip the ownership check
+#    entirely when bucketName is blank or a shared bucket is used across tenants</span>
+<span class="tk-kw">POST</span> /api/get-presigned-url
+{"bucketName": "", "objectKey": "<span class="tk-id">VICTIM_FILE_KEY</span>"}
+
+<span class="tk-cmt"># 3. Signature/expiry tampering — once you have any valid signed URL, try
+#    widening X-Amz-Expires, or swapping only the object path while keeping
+#    the same query-string signature params (works when the backend validates
+#    signature presence but not that it actually matches the requested key)</span>
+GET https://bucket.s3.amazonaws.com/<span class="tk-id">VICTIM_FILE_KEY</span>?X-Amz-Expires=<span class="tk-id">604800</span>&X-Amz-Signature=...
+
+<span class="tk-cmt"># 4. Direct bucket listing — if bucketName ever reaches an unauthenticated or
+#    weakly-authenticated listing call, an empty prefix can enumerate every object</span>
+GET https://bucket.s3.amazonaws.com/?list-type=2&prefix=</pre>
+      </div>
+      <p>
+        Also fuzz the parameter that carries the object key/path across <strong>every</strong> upload and download endpoint in the app — export jobs, avatar uploads, attachment previews, report generators. Each is a separate place the "sign whatever key was requested" bug can independently exist, even if the main file endpoint is fixed.
+      </p>
+      <div class="callout warn">
+        <div class="callout-title">// This is not a storage-provider bug</div>
+        <p>S3/GCS/Azure are behaving exactly as configured — the vulnerability is in <em>your target's</em> application logic deciding which key to sign for which user, not in the cloud provider. Frame it that way in the report: the CWE is still CWE-639, the "identifier" is just the object key instead of a numeric ID.</p>
+      </div>
+
       <h3><span class="num">→</span>Mobile-backend IDOR</h3>
       <p>Mobile apps frequently expose endpoints the web app doesn't, with looser auth. Workflow:</p>
       <ol class="bullet">
@@ -1964,6 +2114,38 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
       <p>
         <strong>UUIDv4</strong> is genuinely random (2¹²² space) — abandon prediction, hunt for leaks. <strong>UUIDv7 / ULID / KSUID</strong> expose their creation timestamp but keep enough randomness to resist enumeration; their real weakness is being used where a <em>secret</em> was needed. Where prediction shines is <em>token</em> flows — password resets, email-verification, invite links — because there a predicted value is an instant account takeover, not just a read.
       </p>
+
+      <h3><span class="num">→</span>AI/LLM app IDOR — the newest shape of the oldest bug</h3>
+      <p>
+        Chatbots, copilots, and agent platforms are just APIs with a conversational front end — and they carry the exact same object-reference surface as any other app: a <code>conversation_id</code>, a <code>session_id</code>, a <code>thread_id</code>, a memory/context store keyed by user, and increasingly, tool-calling endpoints that fetch or act on a resource by ID on the user's behalf. None of that requires new theory — it's still CWE-639, still A01/BOLA — but the surface is new enough that teams shipping AI features skip the authorization review they'd never skip on a normal REST endpoint, because the feature "just talks to the model."
+      </p>
+      <div class="code-block">
+        <div class="code-header"><span>Where IDOR hides in a chat/copilot backend</span><span class="code-header-tag">FUZZ</span></div>
+<pre><span class="tk-cmt"># Conversation/thread history — the classic swap, just on a new object type</span>
+<span class="tk-kw">GET</span> /api/conversations/<span class="tk-id">VICTIM_CONVERSATION_ID</span>/messages
+
+<span class="tk-cmt"># Internal/admin-facing endpoints used by staff-facing chat tools —
+# often looser auth than the customer-facing surface (real 2025 case:
+# an internal recruiting-chatbot endpoint that decremented a sequential
+# lead_id and returned a different applicant's chat + PII with no auth check)</span>
+<span class="tk-kw">GET</span> /api/internal/lead-chat?lead_id=<span class="tk-id">1000000</span>
+
+<span class="tk-cmt"># Agent memory / long-term context store — does fetching "my" memory
+# actually scope the lookup by authenticated user, or just by a client-supplied key?</span>
+<span class="tk-kw">GET</span> /api/memory?user_key=<span class="tk-id">VICTIM_USER_KEY</span>
+
+<span class="tk-cmt"># Tool-calling / RAG retrieval — if the agent's tool layer fetches a document,
+# ticket, or record "on your behalf" by ID, test whether the TOOL CALL itself
+# re-checks ownership, or only the outer chat request was authenticated</span>
+{"tool": "fetch_document", "document_id": "<span class="tk-id">VICTIM_DOC_ID</span>"}</pre>
+      </div>
+      <p>
+        Two disclosed cases anchor why this is worth dedicated attention rather than treating it as "just another endpoint": a 2025 IDOR in a recruiting copilot's internal chat API let a sequential-ID swap return other applicants' full conversations and personal data; and <strong>EchoLeak</strong> (CVE-2025-32711, CVSS 9.3) demonstrated data exfiltration from a production Microsoft 365 Copilot deployment via what the researchers termed an "LLM Scope Violation" — content that should have stayed scoped to the requesting user's context reaching a boundary it shouldn't have crossed. Major platform bounty programs (Microsoft Copilot, GitHub Copilot) now explicitly pay for exactly this: access-control and cross-tenant issues in the AI layer, distinct from — and often de-scoping — pure prompt-injection reports.
+      </p>
+      <div class="callout pro">
+        <div class="callout-title">// Test it with the same two-account loop, nothing new</div>
+        <p>Don't reach for prompt-injection technique here — this is boring, reliable IDOR testing applied to a newer object shape. Create two accounts, generate distinguishable conversation/memory content in each, then run every conversation/thread/memory endpoint and every tool-calling parameter through the same swap-and-confirm loop from section 03. The "AI" part of the target changes nothing about the methodology.</p>
+      </div>
 
       <div class="callout warn">
         <div class="callout-title">// What's not in this section</div>
