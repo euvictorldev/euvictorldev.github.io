@@ -241,8 +241,17 @@
 
     <div class="empty-note">// more entries land here over time.</div>
 
-    <div class="footline">pixo &middot; methodology &middot; for educational and authorized security-testing use only</div>
+    <div class="footline">pixo &middot; methodology &middot; for educational and authorized security-testing use only &middot; <span id="last-updated">last updated —</span></div>
   </main>
+
+  <script src="/methodology/last-updated.js"></script>
+  <script>
+    (function () {
+      var d = window.METHODOLOGY_LAST_UPDATED;
+      var el = document.getElementById('last-updated');
+      if (d && el) el.textContent = 'last updated ' + d;
+    })();
+  </script>
 </body>
 
 </html>

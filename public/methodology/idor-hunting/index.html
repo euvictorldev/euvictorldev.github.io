@@ -991,7 +991,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     <div class="sidebar-head">
       <div>
         <div class="sidebar-brand">// IDOR.guide</div>
-        <div class="sidebar-tag">v.2026 // updated</div>
+        <div class="sidebar-tag" id="last-updated">v.2026 // updated</div>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">
         <span class="nav-toggle-bars" aria-hidden="true"></span> Sections
@@ -1638,6 +1638,11 @@ Replace: <span class="tk-str">Authorization: Bearer eyJhbGciOi...&lt;ACCOUNT_A_T
 <span class="tk-kw">FOO</span>     /api/users/7011/email    → <span class="tk-num">200</span>  <span class="tk-cmt"># frameworks that fall through to GET</span></pre>
       </div>
 
+      <div class="callout pro">
+        <div class="callout-title">// When there's a 403 in your way first</div>
+        <p><code>nomore403</code> (see section 07) automates this exact verb-tampering sweep, plus the path and header tricks later in this section — useful when a perimeter block (WAF, reverse proxy) sits in front of the endpoint you're testing. It only tells you the block fell over, not that you've found an IDOR: confirm with the two-account loop from section 03 once you're past it.</p>
+      </div>
+
       <h3><span class="num">→</span>Path normalization tricks</h3>
       <p>If the auth check is path-based and the application server normalizes paths differently than the WAF or proxy, you can sometimes slip an unauthorized request past the check. Try every variant — modern routers/proxies disagree on which to normalize:</p>
 
@@ -2227,6 +2232,7 @@ GET https://bucket.s3.amazonaws.com/?list-type=2&prefix=</pre>
         <li><code>sourcemapper</code> / <code>unwebpack-sourcemap</code> — reconstruct original source (and its endpoints) from leaked <code>.js.map</code> files</li>
         <li><code>bbot</code> — recursive OSINT/recon framework; expands the asset surface where IDORs can hide</li>
         <li><code>nuclei</code> — template scanner. No official IDOR category (business logic resists generic templates), but its multi-request extract→replay DSL supports custom BOLA checks, and the native <code>-ai</code> flag drafts templates from a prompt</li>
+        <li><code>nomore403</code> — automated 403/40X bypass sweep (verb tampering, path encoding, header/trust tricks) with baseline calibration to cut false positives; accepts your own <code>-H</code> auth header or a Burp-exported <code>--request-file</code>, but only clears a perimeter/WAF-level block — it doesn't know what a "victim" is, so IDOR confirmation still needs the manual two-account swap</li>
       </ul>
 
       <h3><span class="num">→</span>GraphQL tooling</h3>
@@ -2674,10 +2680,17 @@ Output a single .py file. No commentary.</pre>
 
 <button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
 
+<script src="/methodology/last-updated.js"></script>
 <script>
 (function () {
   'use strict';
   document.documentElement.classList.add('js');
+
+  // ---- Last-updated date (shared across /methodology pages) ----
+  var lastUpdatedEl = document.getElementById('last-updated');
+  if (lastUpdatedEl && window.METHODOLOGY_LAST_UPDATED) {
+    lastUpdatedEl.textContent = 'v.2026 // updated ' + window.METHODOLOGY_LAST_UPDATED;
+  }
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 

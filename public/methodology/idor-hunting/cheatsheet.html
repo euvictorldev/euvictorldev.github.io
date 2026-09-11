@@ -516,7 +516,7 @@ tr:last-child td { border-bottom: none; }
 <div class="head">
   <div>
     <div class="head-title">IDOR <span class="accent">Cheatsheet</span></div>
-    <div class="head-sub">// Desk Reference &middot; v.2026 &middot; OWASP 2025-aligned</div>
+    <div class="head-sub" id="last-updated">// Desk Reference &middot; v.2026 &middot; OWASP 2025-aligned</div>
   </div>
   <div class="head-meta">
     Full guide:<br>
@@ -842,6 +842,14 @@ tr:last-child td { border-bottom: none; }
   <span><a href="https://nrshafi.github.io/idor-guide/" target="_blank" rel="noopener noreferrer">nrshafi.github.io/idor-guide</a></span>
 </div>
 
+<script src="/methodology/last-updated.js"></script>
+<script>
+  (function () {
+    var d = window.METHODOLOGY_LAST_UPDATED;
+    var el = document.getElementById('last-updated');
+    if (d && el) el.textContent = '// Desk Reference · v.2026 · updated ' + d;
+  })();
+</script>
 </body>
 </html>
 
