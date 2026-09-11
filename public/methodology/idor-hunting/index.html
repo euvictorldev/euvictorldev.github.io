@@ -67,6 +67,12 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #6d28d9; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+html { scrollbar-width: thin; scrollbar-color: #6d28d9 var(--bg); }
+
 /* Layout */
 .layout {
   display: grid;

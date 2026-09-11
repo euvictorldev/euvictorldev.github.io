@@ -37,6 +37,7 @@
       --border: 260 22% 17%;
       --primary: 275 91% 65%;
       --primary-hot: 275 100% 74%;
+      --primary-deep: 263 70% 50%;
       --fg: 265 30% 92%;
       --muted: 262 13% 51%;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -59,6 +60,12 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: hsl(var(--bg)); }
+    ::-webkit-scrollbar-thumb { background: hsl(var(--primary-deep)); }
+    ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+    html { scrollbar-width: thin; scrollbar-color: hsl(var(--primary-deep)) hsl(var(--bg)); }
 
     ::selection { background: hsl(var(--primary) / 0.35); color: hsl(var(--fg)); }
 
