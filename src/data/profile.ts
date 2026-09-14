@@ -9,7 +9,6 @@ export const links = [
   { label: "GitHub", href: "https://github.com/euvictorldev" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/euvictorldev/" },
   { label: "X", href: "https://x.com/euvictorldev" },
-  { label: "Instagram", href: "https://instagram.com/euvictorldev" },
 ];
 
 export const certifications = [
