@@ -23,7 +23,7 @@ const all: Project[] = [
     id: "hades-agent",
     name: "Hades-Agent",
     role: "AI Product Engineer",
-    period: "May 2026 — present",
+    period: "May 2026",
     sort: 209912,
     summary: "Native desktop AI assistant running an autonomous agent loop with real-time audio.",
     bullets: [
@@ -39,7 +39,7 @@ const all: Project[] = [
     id: "ghostcommit",
     name: "GhostCommit",
     role: "Creator & Software Engineer",
-    period: "May 2026 — present",
+    period: "May 2026",
     sort: 209911,
     summary: "Open-source VS Code extension automating programmatic commits through the GitHub API.",
     bullets: [
