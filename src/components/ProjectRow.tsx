@@ -20,16 +20,16 @@ export default function ProjectRow({ project }: { project: Project }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-4 px-3 py-3 text-left sm:px-5"
+        className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-4 px-3 py-3 text-left sm:px-5"
       >
         <span
           aria-hidden
           className={cn(
-            "text-fluid-sm transition-colors",
-            open ? "text-primary" : "text-muted",
+            "label border border-line px-1.5 py-0.5 transition-colors",
+            open ? "text-primary border-primary" : "text-primary group-hover:border-primary",
           )}
         >
-          {open ? "-" : "+"}
+          {open ? "−" : "+"}
         </span>
 
         <span className="min-w-0">
