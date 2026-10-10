@@ -4,7 +4,7 @@ import SectionHeader from "../SectionHeader";
 export default function Contact() {
   return (
     <section id="contact" className="shell section-pad cv-auto">
-      <SectionHeader index="05" title="Contact" />
+      <SectionHeader index="06" title="Contact" />
 
       <ul className="grid border-t border-line sm:grid-cols-2">
         {links.map((l) => (

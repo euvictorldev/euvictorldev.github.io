@@ -3,6 +3,7 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Research from "@/components/sections/Research";
 import Credentials from "@/components/sections/Credentials";
+import Stats from "@/components/sections/Stats";
 import Work from "@/components/sections/Work";
 import Stack from "@/components/sections/Stack";
 import Contact from "@/components/sections/Contact";
@@ -19,6 +20,7 @@ export default function Index() {
           <Hero />
           <Research />
           <Credentials />
+          <Stats />
           <Work />
           <Stack />
           <Contact />

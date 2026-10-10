@@ -4,7 +4,7 @@ import SectionHeader from "../SectionHeader";
 export default function Stack() {
   return (
     <section id="stack" className="shell section-pad cv-auto">
-      <SectionHeader index="04" title="Stack" />
+      <SectionHeader index="05" title="Stack" />
 
       <dl className="border-t border-line">
         {stack.map((group) => (

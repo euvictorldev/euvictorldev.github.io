@@ -26,10 +26,22 @@ export const certifications = [
   },
 ];
 
-export const books = [
+export const books: { title: string; short: string; status?: string }[] = [
   { title: "OWASP Web Security Testing Guide", short: "WSTG", status: "Read" },
   { title: "OWASP Application Security Verification Standard", short: "ASVS", status: "Read" },
+  { title: "From Day Zero to Zero Day: A Hands-On Guide to Vulnerability Research", short: "D0Z2D" },
 ];
+
+export const portswigger = {
+  level: "Expert" as const,
+  completedDate: "2026-10-10",
+  totalLabs: 274,
+  tiers: [
+    { name: "Apprentice",   completed: 61,  total: 61  },
+    { name: "Practitioner", completed: 173, total: 173 },
+    { name: "Expert",       completed: 40,  total: 40  },
+  ],
+};
 
 export const stack = [
   { group: "LANG", items: ["Python", "TypeScript", "JavaScript", "PHP", "SQL"] },

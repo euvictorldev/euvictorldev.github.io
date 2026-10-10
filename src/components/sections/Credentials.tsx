@@ -60,7 +60,7 @@ export default function Credentials() {
                     <span className="text-primary">{b.short}</span>
                     <span className="text-muted"> — {b.title}</span>
                   </span>
-                  <span className="label whitespace-nowrap">{b.status}</span>
+                  {b.status && <span className="label whitespace-nowrap">{b.status}</span>}
                 </p>
               </li>
             ))}
